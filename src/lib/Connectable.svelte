@@ -52,6 +52,9 @@
 {/if}
 
 <style>
+	:root {
+		--size: 6em;
+	}
 	.endpoint {
 		position: relative;
 		background-color: #baf3ca80;
@@ -61,10 +64,9 @@
 		opacity: 0.5;
 		border: 1px dashed black;
 		border-radius: 2px;
-		width: 1em;
-		height: 1em;
-		/* padding: 10px;
-  margin: 1em */
+		width: var(--size);
+		height: var(--size);
+		padding: calc(var(--size) / 8);
 	}
 	.endpoint:hover {
 		box-shadow: 0 0 6px black;

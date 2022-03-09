@@ -51,12 +51,7 @@
     top: {$coords.y}px;
     "
 >
-	Pull on me<br /><br /><br />
-	{panElement?.getBoundingClientRect()?.x},
-	{panElement?.getBoundingClientRect()?.y}
-	<br />
-	{panElement?.offsetLeft}, {panElement?.offsetTop}
-	<slot />
+	<slot>Pull on me</slot>
 </div>
 
 <style>
@@ -71,5 +66,6 @@
 		border-radius: 4px;
 		background-color: #ff3e00;
 		cursor: move;
+		padding: 0.5em;
 	}
 </style>

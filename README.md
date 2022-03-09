@@ -1,6 +1,12 @@
 # Svelte Connectables
 
-Connect HTML elements with SVG curves.
+Connect HTML elements with SVG curves. Like jsPlumb, only built with Svelte so it's got more flexibility to do more.
+
+[x] - Connect any HTML elements together
+
+[x] - Adjusts when HTML Element position changes
+
+![Demo](demo.gif)
 
 ## Creating a connections
 
