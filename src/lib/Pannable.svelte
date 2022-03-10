@@ -4,10 +4,10 @@
 	import { pannable } from './pannable.js';
 
 	export let panElement;
-	export let x = 200;
-	export let y = 100;
+	export let x = 0;
+	export let y = 0;
 
-	export const coords = spring(
+	const coords = spring(
 		{ x, y },
 		{
 			stiffness: 0.2,
