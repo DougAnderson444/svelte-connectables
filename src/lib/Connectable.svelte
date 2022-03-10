@@ -5,8 +5,8 @@
 	import Link from './Link.svelte';
 	import Pannable from './Pannable.svelte';
 
-	export let left = 10;
-	export let top = 20;
+	export let x = 10;
+	export let y = 20;
 
 	let source; // start of the connection
 	let target; // end of the connection
@@ -42,7 +42,7 @@
 	use:connectable
 	on:connecting={handleConnecting}
 	on:connected={handleConnected}
-	style="left: {left}px; top: {top}px;"
+	style="left: {x}px; top: {y}px;"
 >
 	<slot />
 </div>
