@@ -92,7 +92,7 @@ function connectable(node, options) {
     const config = { attributes: true, childList: false, subtree: false };
     const callback = function(mutationsList, observer2) {
       node.dispatchEvent(new CustomEvent("connecting", {
-        detail: __spreadValues({ node }, currentMousePosition)
+        detail: { node }
       }));
     };
     const observer = new MutationObserver(callback);
@@ -444,9 +444,6 @@ function instance$4($$self, $$props, $$invalidate) {
     if ($$self.$$.dirty & 24768) {
       $$invalidate(9, d = generateXcurve({ source: [x1, y1], target: [x2, y2] }));
     }
-    if ($$self.$$.dirty & 1024) {
-      target && console.log("Connecting", { target });
-    }
   };
   return [
     width,
@@ -784,18 +781,20 @@ function instance$2($$self, $$props, $$invalidate) {
   let prevTarget;
   function handleConnecting(event) {
     $$invalidate(4, source = event.detail.node);
-    $$invalidate(5, target = {
-      offsetLeft: event.detail.x,
-      offsetTop: event.detail.y,
-      offsetWidth: 0,
-      offsetHeight: 0
-    });
+    if (event.detail.x && event.detail.x !== target.offsetLeft && event.detail.y && event.detail.y !== target.offsetTop)
+      $$invalidate(5, target = {
+        offsetLeft: event.detail.x,
+        offsetTop: event.detail.y,
+        offsetWidth: 0,
+        offsetHeight: 0
+      });
   }
   function handleConnected(event) {
     $$invalidate(5, target = event.detail.target);
     if (prevTarget && prevTarget !== target)
       prevTarget.dispatchEvent(new CustomEvent("disconnect"));
     prevTarget = target;
+    console.log("CONNECTeD", { target });
   }
   $$self.$$set = ($$props2) => {
     if ("node" in $$props2)
@@ -1340,4 +1339,4 @@ class Routes extends SvelteComponent {
   }
 }
 export { Routes as default };
-//# sourceMappingURL=index.svelte-d63f0a0a.js.map
+//# sourceMappingURL=index.svelte-55f2e448.js.map
