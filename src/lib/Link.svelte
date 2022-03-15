@@ -41,8 +41,6 @@
 	}
 
 	$: d = generateXcurve({ source: [x1, y1], target: [x2, y2] });
-
-	$: target && console.log('Connecting', { target });
 </script>
 
 <svelte:head
