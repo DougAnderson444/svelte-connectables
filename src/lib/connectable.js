@@ -165,7 +165,7 @@ export function connectable(node, options) {
 			// re-dispatch when the target changes, to update UI
 			node.dispatchEvent(
 				new CustomEvent('connecting', {
-					detail: { node, ...currentMousePosition }
+					detail: { node } // adjust only the source details
 				})
 			);
 		};
