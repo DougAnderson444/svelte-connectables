@@ -17,12 +17,18 @@
 	function handleConnecting(event) {
 		source = event.detail.node;
 		// if connecting, set the target to the mouse pointer
-		target = {
-			offsetLeft: event.detail.x,
-			offsetTop: event.detail.y,
-			offsetWidth: 0,
-			offsetHeight: 0
-		};
+		if (
+			event.detail.x &&
+			event.detail.x !== target.offsetLeft &&
+			event.detail.y &&
+			event.detail.y !== target.offsetTop
+		)
+			target = {
+				offsetLeft: event.detail.x,
+				offsetTop: event.detail.y,
+				offsetWidth: 0,
+				offsetHeight: 0
+			};
 	}
 
 	function handleConnected(event) {
@@ -36,6 +42,7 @@
 			prevTarget.dispatchEvent(new CustomEvent('disconnect'));
 
 		prevTarget = target; // reset target
+		console.log('CONNECTeD', { target });
 	}
 </script>
 
