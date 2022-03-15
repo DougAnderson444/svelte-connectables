@@ -5,11 +5,13 @@
 	import Link from './Link.svelte';
 	import Pannable from './Pannable.svelte';
 
-	export let x = 10;
-	export let y = 20;
+	export let node = { x: 10, y: 10 };
+	$: x = node.x;
+	$: y = node.y;
 
-	let source; // start of the connection
-	let target; // end of the connection
+	export let source; // start of the connection
+	export let target; // end of the connection
+
 	let prevTarget; // to keep track of connection changes, ie: disconnect
 
 	function handleConnecting(event) {
@@ -46,10 +48,6 @@
 >
 	<slot />
 </div>
-
-{#if source && target}
-	<Link {source} {target} />
-{/if}
 
 <style>
 	:root {
