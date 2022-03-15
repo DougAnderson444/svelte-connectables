@@ -19,9 +19,9 @@
 		// if connecting, set the target to the mouse pointer
 		if (
 			event.detail.x &&
-			event.detail.x !== target.offsetLeft &&
+			event.detail.x !== target?.offsetLeft &&
 			event.detail.y &&
-			event.detail.y !== target.offsetTop
+			event.detail.y !== target?.offsetTop
 		)
 			target = {
 				offsetLeft: event.detail.x,
