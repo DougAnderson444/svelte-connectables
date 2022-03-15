@@ -14,10 +14,32 @@ const config = {
 			pages: 'docs',
 			assets: 'docs'
 		}),
+		prerender: {
+			default: true
+		},
 		paths: {
 			// change below to your repo name
-			base: process.env.NODE_ENV === 'development' ? '' : '/svelte-connectables'
-		}
+			base: process.env.NODE_ENV === 'production' ? '/svelte-connectables' : ''
+		},
+		vite: () => ({
+			build: {
+				rollupOptions: {
+					plugins: [],
+					output: {
+						minifyInternalExports: false,
+						compact: false
+					}
+				},
+				minify: false,
+				sourcemap: true,
+				optimization: {
+					minimize: false
+				}
+			},
+			optimization: {
+				minimize: false
+			}
+		})
 	}
 };
 
