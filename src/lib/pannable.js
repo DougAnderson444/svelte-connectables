@@ -3,7 +3,7 @@ export function pannable(node) {
 	let y;
 
 	function handleMousedown(event) {
-		// event.stopPropagation();
+		event.stopPropagation();
 		const c = event.touches ? event.touches[0] : event;
 
 		x = c.clientX;
@@ -23,7 +23,7 @@ export function pannable(node) {
 	}
 
 	function handleMousemove(event) {
-		// event.preventDefault();
+		event.preventDefault();
 		const c = event.touches ? event.touches[0] : event;
 
 		const dx = c.clientX - x;
