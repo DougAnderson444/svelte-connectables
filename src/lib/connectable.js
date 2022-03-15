@@ -20,6 +20,15 @@ const DEFAULT_DROP_ZONE_TYPE = '--any--';
 // a map from type to a set of drop-zones
 const typeToDropZones = new Map();
 
+const printDebug = (generateMessage, logFunction = console.debug) => {
+	const message = generateMessage();
+	if (Array.isArray(message)) {
+		logFunction(...message);
+	} else {
+		logFunction(message);
+	}
+};
+
 /* drop-zones registration management */
 function registerDropZone(dropZoneEl, type) {
 	printDebug(() => 'registering drop-zone if absent');
@@ -71,6 +80,11 @@ export function connectable(node, options) {
 		// prevents responding to any button but left click which equals 0 (which is falsy)
 		if (e.button) {
 			printDebug(() => `ignoring none left click button: ${e.button}`);
+			return;
+		}
+
+		if (e.target !== node) {
+			printDebug(() => `must connect from the connectable, not a child element: ${e.button}`);
 			return;
 		}
 
@@ -143,6 +157,33 @@ export function connectable(node, options) {
 		// 	id: draggedElData[ITEM_ID_KEY],
 		// 	source: SOURCES.POINTER
 		// });
+
+		const config = { attributes: true, childList: false, subtree: false };
+
+		// Callback function to execute when mutations are observed
+		const callback = function (mutationsList, observer) {
+			// re-dispatch when the target changes, to update UI
+			node.dispatchEvent(
+				new CustomEvent('connecting', {
+					detail: { node, ...currentMousePosition }
+				})
+			);
+		};
+
+		// Create an observer instance linked to the callback function
+		const observer = new MutationObserver(callback);
+
+		// Start observing the target node for configured mutations
+		observer.observe(node, config);
+
+		function handleDisconnect(e) {
+			console.log('HANDLING Source DISCONNECT');
+			observer.disconnect();
+			node.removeEventListener('disconnect', handleDisconnect);
+		}
+
+		// listen for disconnect events, so observer is removed
+		node.addEventListener('disconnect', handleDisconnect);
 
 		// handing over to global handlers - starting to watch the element
 		window.addEventListener('mousemove', handleMouseMove, { passive: false });
@@ -218,7 +259,6 @@ export function connectable(node, options) {
 
 		// listen for disconnect events, so observer is removed
 		target.addEventListener('disconnect', handleDisconnect);
-		console.log({ node });
 	}
 
 	return {
