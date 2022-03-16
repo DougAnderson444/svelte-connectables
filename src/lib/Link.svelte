@@ -1,30 +1,32 @@
 <script>
-	// https://github.com/Rich-Harris/svelte-d3-arc-demo/blob/master/src/Viz.svelte
-	// https://github.com/d3/d3-shape/blob/v3.1.0/README.md#_link
+	/**
+	 * Show the mouse pointer temporary link/ projection
+	 */
+
 	import { onMount } from 'svelte';
 	import { link, curveBumpX } from 'd3-shape';
 
+	// mandatory props
 	export let target;
 	export let source;
 
+	// optional props, with defaults
 	export let width = 500;
 	export let height = 500;
-
 	export let strokeColor = 'green';
 	export let strokeWidth = 3;
 	export let arrowColor = 'green';
 	export let startOffset = '60%';
 
-	const generateXcurve = link(curveBumpX);
+	let container;
 
+	const generateXcurve = link(curveBumpX);
 	let svg, mounted;
 	let sourceEl, targetEl;
 	let x1, x2, y1, y2;
-
 	onMount(() => {
 		mounted = true;
 	});
-
 	// if x1 < x2, x1 + width
 	$: if (mounted) {
 		x1 = x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft;
@@ -34,20 +36,25 @@
 		// y1 = y1 < y2 ? source.offsetTop + source.clientHeight : source.offsetTop
 	}
 	$: if (mounted) {
-		x2 = target.offsetLeft; // + target.offsetWidth/2
+		x2 = target.offsetLeft - container.offsetLeft; // + target.offsetWidth/2
 	}
-	$: if (mounted) {
-		y2 = target.offsetTop + target.offsetHeight / 2;
+	$: if (mounted && container) {
+		y2 = target.offsetTop + target.offsetHeight / 2 - container.getBoundingClientRect().y;
 	}
+	$: sourceObj = { source: [x1, y1], target: [x2, y2] };
+	$: d = generateXcurve(sourceObj);
 
-	$: d = generateXcurve({ source: [x1, y1], target: [x2, y2] });
+	$: container &&
+		sourceObj &&
+		console.log({ container: container.getBoundingClientRect(), sourceObj });
 </script>
 
+y2: {y2}
 <svelte:head
 	><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
 </svelte:head>
 
-<span class="svg-container">
+<span class="svg-container" bind:this={container}>
 	<svg bind:this={svg} {width} {height}>
 		<defs>
 			<marker
@@ -104,21 +111,18 @@
 		width: 100%;
 		height: 100%;
 	}
-
 	text {
 		font-family: arrows;
 		font-size: 1.5em;
 		fill: grey;
 		dominant-baseline: central;
 	}
-
 	tspan {
 		font-family: 'Luckiest Guy', cursive;
 		font-size: 0.5em;
 		/* font-family: Impact; */
 		dominant-baseline: ideographic;
 	}
-
 	@font-face {
 		font-family: arrows;
 		/* src: url(arrows.woff); */
