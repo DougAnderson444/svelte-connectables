@@ -1,6 +1,6 @@
 {
 	"name": "svelte-connectables",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"svelte": "src/lib/connectable.js",
 	"scripts": {
 		"dev": "svelte-kit dev --port 3031",
@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"d3-shape": "^3.1.0"
+		"d3-shape": "^3.1.0",
+		"nanoid": "^3.3.1"
 	}
 }
