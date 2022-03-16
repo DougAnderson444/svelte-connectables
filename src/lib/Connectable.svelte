@@ -39,6 +39,9 @@
 
 	function handleConnected(event) {
 		connectingNow = false;
+
+		if (!event.detail.target.id) return; // node must have an ID
+
 		console.log('CONNECTED firing');
 
 		// TODO: Remove links button / context menu
