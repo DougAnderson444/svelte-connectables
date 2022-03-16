@@ -3,7 +3,7 @@
 
 	export let nodes;
 	export let node;
-	export let mouseMoving;
+	export let mouseMoving = false;
 
 	const dispatch = createEventDispatcher();
 

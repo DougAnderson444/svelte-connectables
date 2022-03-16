@@ -3,9 +3,12 @@
 	import { spring } from 'svelte/motion';
 	import { pannable } from './pannable.js';
 
-	export let panElement;
+	let panElement;
 	export let x = 0;
 	export let y = 0;
+
+	$: x = $coords.x;
+	$: y = $coords.y;
 
 	const coords = spring(
 		{ x, y },
@@ -32,11 +35,7 @@
 		coords.set({ x, y });
 	}
 
-	$: if ($coords) panElement = panElement; // even though the variable is bound, still needs update like this
-
-	onMount(() => {
-		panElement = panElement; // initialize the element
-	});
+	onMount(() => {});
 </script>
 
 <div
@@ -47,8 +46,8 @@
 	on:panmove={handlePanMove}
 	on:panend={handlePanEnd}
 	style="
-    left: {$coords.x}px;
-    top: {$coords.y}px;
+    left: {x}px;
+    top: {y}px;
     "
 >
 	<slot>Pull on me</slot>
