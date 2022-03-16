@@ -5,16 +5,22 @@
 	import Link from './Link.svelte';
 	import Pannable from './Pannable.svelte';
 
-	export let node = { x: 10, y: 10 };
+	export let node;
+	export let data;
+
+	let source; // start of the connection
+	let target; // end of the connection
+
 	$: x = node.x;
 	$: y = node.y;
 
-	export let source; // start of the connection
-	export let target; // end of the connection
-
 	let prevTarget; // to keep track of connection changes, ie: disconnect
 
+	let connectingNow = false;
+
 	function handleConnecting(event) {
+		connectingNow = true;
+		console.log('CONNECTing');
 		source = event.detail.node;
 		// if connecting, set the target to the mouse pointer
 		if (
@@ -32,22 +38,24 @@
 	}
 
 	function handleConnected(event) {
-		// mutation observer in action directive script
-		// fires update event if target attributes change
-		// keeping this target reference up to date
-		target = event.detail.target;
+		connectingNow = false;
+		console.log('CONNECTED firing');
 
-		// if new target, fire disconnect event on old target element
-		if (prevTarget && prevTarget !== target)
-			prevTarget.dispatchEvent(new CustomEvent('disconnect'));
-
-		prevTarget = target; // reset target
-		console.log('CONNECTeD', { target });
+		// TODO: Remove links button / context menu
+		// TODO: prevent duplicate links
+		data.links = [
+			...data.links,
+			{
+				source: { id: node.id },
+				target: { id: event.detail.target.id }
+			}
+		];
 	}
 </script>
 
 <div
 	class="endpoint"
+	id={node.id}
 	use:connectable
 	on:connecting={handleConnecting}
 	on:connected={handleConnected}
@@ -56,12 +64,16 @@
 	<slot />
 </div>
 
+{#if connectingNow}
+	<Link {source} {target} />
+{/if}
+
 <style>
 	:root {
 		--size: 6em;
 	}
 	.endpoint {
-		position: relative;
+		position: absolute;
 		background-color: #baf3ca80;
 		box-shadow: 0 0 2px black;
 		transition: box-shadow 0.25s ease-in;

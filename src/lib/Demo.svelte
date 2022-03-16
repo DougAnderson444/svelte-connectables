@@ -2,28 +2,43 @@
 	import { spring } from 'svelte/motion';
 	import Connectable from './Connectable.svelte';
 	import PanHandle from './PanHandle.svelte';
-	import Pannable from './Pannable.svelte';
-	import Link from './Link.svelte';
+	import Links from './Links.svelte';
+	import Object from './Object.svelte';
 
 	let nodes = {
 		connections: []
 	};
 
-	let node = { x: 10, y: 10 };
+	let node = { x: 10, y: 10, connections: [] };
 	let source;
 	let target;
+
+	let data = {
+		nodes: [
+			{ id: '1', group: 1, connectable: true, x: 10, y: 10 },
+			{ id: '2', group: 2, connectable: false, x: 150, y: 150 },
+			{ id: '3', group: 2, connectable: false, x: 250, y: 300 }
+		],
+		links: [
+			{ source: { id: '1' }, target: { id: '2' } }
+			// { source: { id: '1' }, target: { id: '3' } }
+		]
+	};
 </script>
 
+<!-- Troubleshooting data  -->
+<!-- <Object val={data} /> -->
+
 <div class="wrapper">
-	<Connectable bind:source bind:target bind:node>
-		<PanHandle {nodes} bind:node />
-		Connect from Me</Connectable
-	>
+	{#each data.nodes as node (node.id)}
+		<Connectable bind:data bind:node>
+			<PanHandle {nodes} bind:node />
+			{node.id} Connect from Me
+		</Connectable>
+	{/each}
 
-	<Pannable x={200} y={200}>Connect to me, then pull on me.</Pannable>
-
-	{#if source && target}
-		<Link {source} {target} />
+	{#if data.links.length > 0}
+		<Links {data} />
 	{/if}
 </div>
 
