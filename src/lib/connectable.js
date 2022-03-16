@@ -158,33 +158,6 @@ export function connectable(node, options) {
 		// 	source: SOURCES.POINTER
 		// });
 
-		const config = { attributes: true, childList: false, subtree: false };
-
-		// Callback function to execute when mutations are observed
-		const callback = function (mutationsList, observer) {
-			// re-dispatch when the target changes, to update UI
-			node.dispatchEvent(
-				new CustomEvent('connecting', {
-					detail: { node } // adjust only the source details
-				})
-			);
-		};
-
-		// Create an observer instance linked to the callback function
-		const observer = new MutationObserver(callback);
-
-		// Start observing the target node for configured mutations
-		observer.observe(node, config);
-
-		function handleDisconnect(e) {
-			console.log('HANDLING Source DISCONNECT');
-			observer.disconnect();
-			node.removeEventListener('disconnect', handleDisconnect);
-		}
-
-		// listen for disconnect events, so observer is removed
-		node.addEventListener('disconnect', handleDisconnect);
-
 		// handing over to global handlers - starting to watch the element
 		window.addEventListener('mousemove', handleMouseMove, { passive: false });
 		window.addEventListener('touchmove', handleMouseMove, { passive: false, capture: false });
@@ -228,37 +201,6 @@ export function connectable(node, options) {
 				detail: { target } // passes a non updating copy up
 			})
 		);
-
-		/* Also set up Observer monitor to resend event on change */
-		/* When target changes, observer sends out a new event to redraw */
-
-		// Options for the observer (which mutations to observe)
-		const config = { attributes: true, childList: false, subtree: false };
-
-		// Callback function to execute when mutations are observed
-		const callback = function (mutationsList, observer) {
-			// re-dispatch when the target changes, to update UI
-			node.dispatchEvent(
-				new CustomEvent('connected', {
-					detail: { target } // passes a non updating copy up
-				})
-			);
-		};
-
-		// Create an observer instance linked to the callback function
-		const observer = new MutationObserver(callback);
-
-		// Start observing the target node for configured mutations
-		observer.observe(target, config);
-
-		function handleDisconnect(e) {
-			console.log('HANDLING DISCONNECT');
-			observer.disconnect();
-			target.removeEventListener('disconnect', handleDisconnect);
-		}
-
-		// listen for disconnect events, so observer is removed
-		target.addEventListener('disconnect', handleDisconnect);
 	}
 
 	return {
