@@ -29,16 +29,16 @@
 	});
 	// if x1 < x2, x1 + width
 	$: if (mounted) {
-		x1 = Math.floor(
-			x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft
-		);
+		x1 = Math.floor(source.offsetLeft + source.clientWidth / 2);
 	}
 	$: if (mounted) {
 		y1 = Math.floor(source.offsetTop + source.clientHeight / 2);
 		// y1 = y1 < y2 ? source.offsetTop + source.clientHeight : source.offsetTop
 	}
 	$: if (mounted) {
-		x2 = Math.floor(target.offsetLeft - container.offsetLeft); // + target.offsetWidth/2
+		x2 = Math.floor(
+			target.offsetLeft + target.offsetWidth / 2 - container.getBoundingClientRect().x
+		);
 	}
 	$: if (mounted && container) {
 		y2 = Math.floor(
@@ -47,10 +47,6 @@
 	}
 	$: sourceObj = { source: [x1, y1], target: [x2, y2] };
 	$: d = generateXcurve(sourceObj);
-
-	$: container &&
-		sourceObj &&
-		console.log({ container: container.getBoundingClientRect(), sourceObj });
 </script>
 
 y2: {y2}
