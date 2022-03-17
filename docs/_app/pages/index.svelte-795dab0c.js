@@ -425,22 +425,22 @@ function instance$4($$self, $$props, $$invalidate) {
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 14464) {
       if (mounted) {
-        $$invalidate(7, x1 = x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft);
+        $$invalidate(7, x1 = Math.floor(x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft));
       }
     }
     if ($$self.$$.dirty & 12288) {
       if (mounted) {
-        $$invalidate(15, y1 = source.offsetTop + source.clientHeight / 2);
+        $$invalidate(15, y1 = Math.floor(source.offsetTop + source.clientHeight / 2));
       }
     }
     if ($$self.$$.dirty & 10304) {
       if (mounted) {
-        $$invalidate(14, x2 = target.offsetLeft - container.offsetLeft);
+        $$invalidate(14, x2 = Math.floor(target.offsetLeft - container.offsetLeft));
       }
     }
     if ($$self.$$.dirty & 10304) {
       if (mounted && container) {
-        $$invalidate(8, y2 = target.offsetTop + target.offsetHeight / 2 - container.getBoundingClientRect().y);
+        $$invalidate(8, y2 = Math.floor(target.offsetTop + target.offsetHeight / 2 - container.getBoundingClientRect().y));
       }
     }
     if ($$self.$$.dirty & 49536) {
@@ -780,7 +780,7 @@ function create_if_block$2(ctx) {
       attr(svg, "data-icon", "arrows-alt");
       attr(svg, "data-prefix", "fas");
       attr(svg, "viewBox", "0 0 512 512");
-      attr(div, "class", "dragger svelte-1ejqjx0");
+      attr(div, "class", "dragger svelte-1f6p2jn");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -1621,8 +1621,8 @@ function instance($$self, $$props, $$invalidate) {
         id: "2",
         group: 2,
         connectable: false,
-        x: 250,
-        y: 150
+        x: 414,
+        y: 190
       },
       {
         id: "3",
@@ -1698,4 +1698,4 @@ class Routes extends SvelteComponent {
   }
 }
 export { Routes as default };
-//# sourceMappingURL=index.svelte-265f3fb2.js.map
+//# sourceMappingURL=index.svelte-795dab0c.js.map

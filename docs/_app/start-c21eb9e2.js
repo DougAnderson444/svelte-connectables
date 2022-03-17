@@ -740,7 +740,7 @@ class Root extends SvelteComponent {
 const c = [
   () => __vitePreload(() => import("./pages/__layout.svelte-5b826b98.js"), true ? ["pages/__layout.svelte-5b826b98.js","assets/pages/__layout.svelte-66ddfa2b.css","chunks/vendor-60f50316.js"] : void 0),
   () => __vitePreload(() => import("./error.svelte-1afd2359.js"), true ? ["error.svelte-1afd2359.js","chunks/vendor-60f50316.js"] : void 0),
-  () => __vitePreload(() => import("./pages/index.svelte-265f3fb2.js"), true ? ["pages/index.svelte-265f3fb2.js","assets/pages/index.svelte-29984dcd.css","chunks/vendor-60f50316.js","chunks/preload-helper-8499f0b6.js"] : void 0)
+  () => __vitePreload(() => import("./pages/index.svelte-795dab0c.js"), true ? ["pages/index.svelte-795dab0c.js","assets/pages/index.svelte-37fc5f23.css","chunks/vendor-60f50316.js","chunks/preload-helper-8499f0b6.js"] : void 0)
 ];
 const routes = [
   [/^\/$/, [c[0], c[2]], [c[1]]]
@@ -857,7 +857,7 @@ function notifiable_store(value) {
 }
 function create_updated_store() {
   const { set, subscribe } = writable(false);
-  const initial = "1647518675714";
+  const initial = "1647522836957";
   let timeout;
   async function check() {
     clearTimeout(timeout);
@@ -1738,4 +1738,4 @@ async function start({ paths, target, session, route, spa, trailing_slash, hydra
   dispatchEvent(new CustomEvent("sveltekit:start"));
 }
 export { start };
-//# sourceMappingURL=start-9222da17.js.map
+//# sourceMappingURL=start-c21eb9e2.js.map
