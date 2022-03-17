@@ -29,17 +29,21 @@
 	});
 	// if x1 < x2, x1 + width
 	$: if (mounted) {
-		x1 = x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft;
+		x1 = Math.floor(
+			x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft
+		);
 	}
 	$: if (mounted) {
-		y1 = source.offsetTop + source.clientHeight / 2;
+		y1 = Math.floor(source.offsetTop + source.clientHeight / 2);
 		// y1 = y1 < y2 ? source.offsetTop + source.clientHeight : source.offsetTop
 	}
 	$: if (mounted) {
-		x2 = target.offsetLeft - container.offsetLeft; // + target.offsetWidth/2
+		x2 = Math.floor(target.offsetLeft - container.offsetLeft); // + target.offsetWidth/2
 	}
 	$: if (mounted && container) {
-		y2 = target.offsetTop + target.offsetHeight / 2 - container.getBoundingClientRect().y;
+		y2 = Math.floor(
+			target.offsetTop + target.offsetHeight / 2 - container.getBoundingClientRect().y
+		);
 	}
 	$: sourceObj = { source: [x1, y1], target: [x2, y2] };
 	$: d = generateXcurve(sourceObj);
