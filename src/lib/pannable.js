@@ -4,6 +4,7 @@ export function pannable(node) {
 
 	function handleMousedown(event) {
 		event.stopPropagation();
+		event.preventDefault();
 		const c = event.touches ? event.touches[0] : event;
 
 		x = c.clientX;
