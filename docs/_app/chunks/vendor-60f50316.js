@@ -436,6 +436,7 @@ function transition_out(block, local, detach2, callback) {
     block.o(local);
   }
 }
+const globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
 function outro_and_destroy_block(block, lookup) {
   transition_out(block, 1, 1, () => {
     lookup.delete(block.key);
@@ -883,5 +884,5 @@ function link(curve) {
   };
   return link2;
 }
-export { SvelteComponent, action_destroyer, add_flush_callback, afterUpdate, append_hydration, assign, attr, bind, binding_callbacks, bumpX, check_outros, children, claim_component, claim_element, claim_space, claim_svg_element, claim_text, createEventDispatcher, create_component, create_slot, destroy_component, destroy_each, detach, element, empty, get_all_dirty_from_scope, get_slot_changes, get_spread_object, get_spread_update, group_outros, init, insert_hydration, link, listen, mount_component, noop, onMount, outro_and_destroy_block, query_selector_all, run_all, safe_not_equal, setContext, set_data, set_style, space, svg_element, text, tick, transition_in, transition_out, update_keyed_each, update_slot_base, writable, xlink_attr };
-//# sourceMappingURL=vendor-b62dd5d2.js.map
+export { SvelteComponent, action_destroyer, add_flush_callback, afterUpdate, append_hydration, assign, attr, bind, binding_callbacks, bumpX, check_outros, children, claim_component, claim_element, claim_space, claim_svg_element, claim_text, createEventDispatcher, create_component, create_slot, destroy_component, destroy_each, detach, element, empty, get_all_dirty_from_scope, get_slot_changes, get_spread_object, get_spread_update, globals, group_outros, init, insert_hydration, link, listen, mount_component, noop, onMount, outro_and_destroy_block, query_selector_all, run_all, safe_not_equal, setContext, set_data, set_style, space, svg_element, text, tick, transition_in, transition_out, update_keyed_each, update_slot_base, writable, xlink_attr };
+//# sourceMappingURL=vendor-60f50316.js.map

@@ -17,7 +17,7 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-import { SvelteComponent, init, safe_not_equal, svg_element, claim_svg_element, children, detach, attr, insert_hydration, append_hydration, text, space, element, claim_text, claim_space, query_selector_all, claim_element, xlink_attr, set_data, noop, link, bumpX, onMount, binding_callbacks, create_slot, create_component, claim_component, mount_component, transition_in, transition_out, destroy_component, empty, set_style, action_destroyer, listen, update_slot_base, get_all_dirty_from_scope, get_slot_changes, group_outros, check_outros, run_all, createEventDispatcher, destroy_each, add_flush_callback, update_keyed_each, bind, outro_and_destroy_block } from "../chunks/vendor-b62dd5d2.js";
+import { SvelteComponent, init, safe_not_equal, svg_element, claim_svg_element, children, detach, attr, insert_hydration, append_hydration, text, space, element, claim_text, claim_space, query_selector_all, claim_element, xlink_attr, set_data, noop, link, bumpX, onMount, binding_callbacks, create_slot, create_component, claim_component, mount_component, transition_in, transition_out, destroy_component, empty, set_style, action_destroyer, listen, update_slot_base, get_all_dirty_from_scope, get_slot_changes, group_outros, check_outros, run_all, createEventDispatcher, destroy_each, globals, add_flush_callback, update_keyed_each, bind, outro_and_destroy_block } from "../chunks/vendor-60f50316.js";
 import { __vitePreload } from "../chunks/preload-helper-8499f0b6.js";
 const MIN_MOVEMENT_BEFORE_DRAG_START_PX = 3;
 let currentMousePosition;
@@ -573,7 +573,7 @@ function create_fragment$4(ctx) {
       this.h();
     },
     h() {
-      attr(div, "class", "endpoint svelte-sobeng");
+      attr(div, "class", "endpoint svelte-1fwsbir");
       attr(div, "id", div_id_value = ctx[0].id);
       set_style(div, "left", ctx[5] + "px");
       set_style(div, "top", ctx[4] + "px");
@@ -683,6 +683,8 @@ function instance$3($$self, $$props, $$invalidate) {
   }
   function handleConnected(event) {
     $$invalidate(3, connectingNow = false);
+    if (!event.detail.target.id)
+      return;
     console.log("CONNECTED firing");
     $$invalidate(8, data.links = [
       ...data.links,
@@ -778,7 +780,7 @@ function create_if_block$2(ctx) {
       attr(svg, "data-icon", "arrows-alt");
       attr(svg, "data-prefix", "fas");
       attr(svg, "viewBox", "0 0 512 512");
-      attr(div, "class", "dragger svelte-1f6p2jn");
+      attr(div, "class", "dragger svelte-1ejqjx0");
     },
     m(target, anchor) {
       insert_hydration(target, div, anchor);
@@ -854,7 +856,7 @@ function instance$2($$self, $$props, $$invalidate) {
   const dispatch = createEventDispatcher();
   let pannable;
   onMount(async () => {
-    $$invalidate(0, { pannable } = await __vitePreload(() => import("../chunks/pannable-fea7e42a.js"), true ? [] : void 0), pannable);
+    $$invalidate(0, { pannable } = await __vitePreload(() => import("../chunks/pannable-35ddda62.js"), true ? [] : void 0), pannable);
   });
   function handlePanStart(event) {
     $$invalidate(6, mouseMoving = true);
@@ -901,6 +903,7 @@ class PanHandle extends SvelteComponent {
   }
 }
 var Links_svelte_svelte_type_style_lang = "";
+const { document: document_1 } = globals;
 function get_each_context$1(ctx, list, i) {
   const child_ctx = ctx.slice();
   child_ctx[10] = list[i];
@@ -908,121 +911,11 @@ function get_each_context$1(ctx, list, i) {
   return child_ctx;
 }
 function create_if_block$1(ctx) {
-  let g;
-  let path;
-  let path_d_value;
-  return {
-    c() {
-      g = svg_element("g");
-      path = svg_element("path");
-      this.h();
-    },
-    l(nodes) {
-      g = claim_svg_element(nodes, "g", { stroke: true, "stroke-opacity": true });
-      var g_nodes = children(g);
-      path = claim_svg_element(g_nodes, "path", {
-        d: true,
-        id: true,
-        "stroke-width": true,
-        stroke: true,
-        fill: true,
-        "stroke-linecap": true,
-        "marker-mid": true,
-        style: true
-      });
-      children(path).forEach(detach);
-      g_nodes.forEach(detach);
-      this.h();
-    },
-    h() {
-      attr(path, "d", path_d_value = ctx[7](ctx[10]));
-      attr(path, "id", "link_" + ctx[12]);
-      attr(path, "stroke-width", ctx[4]);
-      attr(path, "stroke", ctx[3]);
-      attr(path, "fill", "none");
-      attr(path, "stroke-linecap", "round");
-      attr(path, "marker-mid", "url(#triangle)");
-      attr(path, "style", "");
-      attr(g, "stroke", "red");
-      attr(g, "stroke-opacity", "0.9");
-    },
-    m(target, anchor) {
-      insert_hydration(target, g, anchor);
-      append_hydration(g, path);
-    },
-    p(ctx2, dirty) {
-      if (dirty & 1 && path_d_value !== (path_d_value = ctx2[7](ctx2[10]))) {
-        attr(path, "d", path_d_value);
-      }
-      if (dirty & 16) {
-        attr(path, "stroke-width", ctx2[4]);
-      }
-      if (dirty & 8) {
-        attr(path, "stroke", ctx2[3]);
-      }
-    },
-    d(detaching) {
-      if (detaching)
-        detach(g);
-    }
-  };
-}
-function create_each_block$1(ctx) {
-  let if_block_anchor;
-  let if_block = ctx[10] && create_if_block$1(ctx);
-  return {
-    c() {
-      if (if_block)
-        if_block.c();
-      if_block_anchor = empty();
-    },
-    l(nodes) {
-      if (if_block)
-        if_block.l(nodes);
-      if_block_anchor = empty();
-    },
-    m(target, anchor) {
-      if (if_block)
-        if_block.m(target, anchor);
-      insert_hydration(target, if_block_anchor, anchor);
-    },
-    p(ctx2, dirty) {
-      if (ctx2[10]) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-        } else {
-          if_block = create_if_block$1(ctx2);
-          if_block.c();
-          if_block.m(if_block_anchor.parentNode, if_block_anchor);
-        }
-      } else if (if_block) {
-        if_block.d(1);
-        if_block = null;
-      }
-    },
-    d(detaching) {
-      if (if_block)
-        if_block.d(detaching);
-      if (detaching)
-        detach(if_block_anchor);
-    }
-  };
-}
-function create_fragment$2(ctx) {
-  let link_1;
-  let t0;
-  let span;
+  let div;
   let svg;
   let defs;
   let marker;
   let path;
-  let text_1;
-  let textPath0;
-  let tspan;
-  let t1;
-  let t2;
-  let textPath1;
-  let t3;
   let each_value = ctx[0].links;
   let each_blocks = [];
   for (let i = 0; i < each_value.length; i += 1) {
@@ -1030,9 +923,7 @@ function create_fragment$2(ctx) {
   }
   return {
     c() {
-      link_1 = element("link");
-      t0 = space();
-      span = element("span");
+      div = element("div");
       svg = svg_element("svg");
       defs = svg_element("defs");
       marker = svg_element("marker");
@@ -1040,23 +931,12 @@ function create_fragment$2(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      text_1 = svg_element("text");
-      textPath0 = svg_element("textPath");
-      tspan = svg_element("tspan");
-      t1 = text("Curvy Connector");
-      t2 = space();
-      textPath1 = svg_element("textPath");
-      t3 = text("\u27A4");
       this.h();
     },
     l(nodes) {
-      const head_nodes = query_selector_all('[data-svelte="svelte-1y2tnph"]', document.head);
-      link_1 = claim_element(head_nodes, "LINK", { rel: true, type: true, href: true });
-      head_nodes.forEach(detach);
-      t0 = claim_space(nodes);
-      span = claim_element(nodes, "SPAN", { class: true });
-      var span_nodes = children(span);
-      svg = claim_svg_element(span_nodes, "svg", { width: true, height: true, class: true });
+      div = claim_element(nodes, "DIV", { class: true });
+      var div_nodes = children(div);
+      svg = claim_svg_element(div_nodes, "svg", { class: true });
       var svg_nodes = children(svg);
       defs = claim_svg_element(svg_nodes, "defs", {});
       var defs_nodes = children(defs);
@@ -1078,33 +958,11 @@ function create_fragment$2(ctx) {
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].l(svg_nodes);
       }
-      text_1 = claim_svg_element(svg_nodes, "text", { class: true });
-      var text_1_nodes = children(text_1);
-      textPath0 = claim_svg_element(text_1_nodes, "textPath", { "xlink:href": true, startOffset: true });
-      var textPath0_nodes = children(textPath0);
-      tspan = claim_svg_element(textPath0_nodes, "tspan", { fill: true, class: true });
-      var tspan_nodes = children(tspan);
-      t1 = claim_text(tspan_nodes, "Curvy Connector");
-      tspan_nodes.forEach(detach);
-      t2 = claim_space(textPath0_nodes);
-      textPath0_nodes.forEach(detach);
-      textPath1 = claim_svg_element(text_1_nodes, "textPath", {
-        "xlink:href": true,
-        startOffset: true,
-        fill: true
-      });
-      var textPath1_nodes = children(textPath1);
-      t3 = claim_text(textPath1_nodes, "\u27A4");
-      textPath1_nodes.forEach(detach);
-      text_1_nodes.forEach(detach);
       svg_nodes.forEach(detach);
-      span_nodes.forEach(detach);
+      div_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(link_1, "rel", "stylesheet");
-      attr(link_1, "type", "text/css");
-      attr(link_1, "href", "//fonts.googleapis.com/css?family=Luckiest+Guy");
       attr(path, "d", "M 0 0 L 10 5 L 0 10 z");
       attr(path, "fill", "context-stroke");
       attr(marker, "id", "triangle");
@@ -1115,40 +973,21 @@ function create_fragment$2(ctx) {
       attr(marker, "markerWidth", "4");
       attr(marker, "markerHeight", "3");
       attr(marker, "orient", "auto");
-      attr(tspan, "fill", "black");
-      attr(tspan, "class", "svelte-nldihd");
-      xlink_attr(textPath0, "xlink:href", "#path1");
-      attr(textPath0, "startOffset", "20%");
-      xlink_attr(textPath1, "xlink:href", "#path1");
-      attr(textPath1, "startOffset", ctx[6]);
-      attr(textPath1, "fill", ctx[5]);
-      attr(text_1, "class", "svelte-nldihd");
-      attr(svg, "width", ctx[1]);
-      attr(svg, "height", ctx[2]);
-      attr(svg, "class", "svelte-nldihd");
-      attr(span, "class", "svg-container svelte-nldihd");
+      attr(svg, "class", "svelte-1ftngq1");
+      attr(div, "class", "svg-container svelte-1ftngq1");
     },
     m(target, anchor) {
-      append_hydration(document.head, link_1);
-      insert_hydration(target, t0, anchor);
-      insert_hydration(target, span, anchor);
-      append_hydration(span, svg);
+      insert_hydration(target, div, anchor);
+      append_hydration(div, svg);
       append_hydration(svg, defs);
       append_hydration(defs, marker);
       append_hydration(marker, path);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].m(svg, null);
       }
-      append_hydration(svg, text_1);
-      append_hydration(text_1, textPath0);
-      append_hydration(textPath0, tspan);
-      append_hydration(tspan, t1);
-      append_hydration(textPath0, t2);
-      append_hydration(text_1, textPath1);
-      append_hydration(textPath1, t3);
     },
-    p(ctx2, [dirty]) {
-      if (dirty & 153) {
+    p(ctx2, dirty) {
+      if (dirty & 127) {
         each_value = ctx2[0].links;
         let i;
         for (i = 0; i < each_value.length; i += 1) {
@@ -1158,7 +997,7 @@ function create_fragment$2(ctx) {
           } else {
             each_blocks[i] = create_each_block$1(child_ctx);
             each_blocks[i].c();
-            each_blocks[i].m(svg, text_1);
+            each_blocks[i].m(svg, null);
           }
         }
         for (; i < each_blocks.length; i += 1) {
@@ -1166,17 +1005,219 @@ function create_fragment$2(ctx) {
         }
         each_blocks.length = each_value.length;
       }
-      if (dirty & 64) {
-        attr(textPath1, "startOffset", ctx2[6]);
-      }
-      if (dirty & 32) {
-        attr(textPath1, "fill", ctx2[5]);
-      }
-      if (dirty & 2) {
-        attr(svg, "width", ctx2[1]);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      destroy_each(each_blocks, detaching);
+    }
+  };
+}
+function create_if_block_1(ctx) {
+  let g;
+  let path;
+  let path_d_value;
+  let text_1;
+  let textPath0;
+  let tspan;
+  let t0;
+  let t1;
+  let textPath1;
+  let t2;
+  return {
+    c() {
+      g = svg_element("g");
+      path = svg_element("path");
+      text_1 = svg_element("text");
+      textPath0 = svg_element("textPath");
+      tspan = svg_element("tspan");
+      t0 = text("Curvy Connector");
+      t1 = space();
+      textPath1 = svg_element("textPath");
+      t2 = text("\u27A4");
+      this.h();
+    },
+    l(nodes) {
+      g = claim_svg_element(nodes, "g", { stroke: true, "stroke-opacity": true });
+      var g_nodes = children(g);
+      path = claim_svg_element(g_nodes, "path", {
+        d: true,
+        id: true,
+        "stroke-width": true,
+        stroke: true,
+        fill: true,
+        "stroke-linecap": true,
+        "marker-mid": true,
+        "stroke-opacity": true,
+        style: true
+      });
+      children(path).forEach(detach);
+      text_1 = claim_svg_element(g_nodes, "text", { class: true });
+      var text_1_nodes = children(text_1);
+      textPath0 = claim_svg_element(text_1_nodes, "textPath", { "xlink:href": true, startOffset: true });
+      var textPath0_nodes = children(textPath0);
+      tspan = claim_svg_element(textPath0_nodes, "tspan", { fill: true, class: true });
+      var tspan_nodes = children(tspan);
+      t0 = claim_text(tspan_nodes, "Curvy Connector");
+      tspan_nodes.forEach(detach);
+      t1 = claim_space(textPath0_nodes);
+      textPath0_nodes.forEach(detach);
+      textPath1 = claim_svg_element(text_1_nodes, "textPath", {
+        "xlink:href": true,
+        startOffset: true,
+        fill: true
+      });
+      var textPath1_nodes = children(textPath1);
+      t2 = claim_text(textPath1_nodes, "\u27A4");
+      textPath1_nodes.forEach(detach);
+      text_1_nodes.forEach(detach);
+      g_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(path, "d", path_d_value = ctx[6](ctx[10]));
+      attr(path, "id", "link_" + ctx[12]);
+      attr(path, "stroke-width", ctx[2]);
+      attr(path, "stroke", ctx[1]);
+      attr(path, "fill", "none");
+      attr(path, "stroke-linecap", "round");
+      attr(path, "marker-mid", "url(#triangle)");
+      attr(path, "stroke-opacity", ".4");
+      attr(path, "style", "");
+      attr(tspan, "fill", "black");
+      attr(tspan, "class", "svelte-1ftngq1");
+      xlink_attr(textPath0, "xlink:href", "#link_" + ctx[12]);
+      attr(textPath0, "startOffset", "20%");
+      xlink_attr(textPath1, "xlink:href", "#link_" + ctx[12]);
+      attr(textPath1, "startOffset", ctx[4]);
+      attr(textPath1, "fill", ctx[3]);
+      attr(text_1, "class", "svelte-1ftngq1");
+      attr(g, "stroke", "green");
+      attr(g, "stroke-opacity", "0.1");
+    },
+    m(target, anchor) {
+      insert_hydration(target, g, anchor);
+      append_hydration(g, path);
+      append_hydration(g, text_1);
+      append_hydration(text_1, textPath0);
+      append_hydration(textPath0, tspan);
+      append_hydration(tspan, t0);
+      append_hydration(textPath0, t1);
+      append_hydration(text_1, textPath1);
+      append_hydration(textPath1, t2);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 1 && path_d_value !== (path_d_value = ctx2[6](ctx2[10]))) {
+        attr(path, "d", path_d_value);
       }
       if (dirty & 4) {
-        attr(svg, "height", ctx2[2]);
+        attr(path, "stroke-width", ctx2[2]);
+      }
+      if (dirty & 2) {
+        attr(path, "stroke", ctx2[1]);
+      }
+      if (dirty & 16) {
+        attr(textPath1, "startOffset", ctx2[4]);
+      }
+      if (dirty & 8) {
+        attr(textPath1, "fill", ctx2[3]);
+      }
+    },
+    d(detaching) {
+      if (detaching)
+        detach(g);
+    }
+  };
+}
+function create_each_block$1(ctx) {
+  let if_block_anchor;
+  let if_block = ctx[10] && ctx[5] && create_if_block_1(ctx);
+  return {
+    c() {
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+    },
+    p(ctx2, dirty) {
+      if (ctx2[10] && ctx2[5]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block = create_if_block_1(ctx2);
+          if_block.c();
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
+      }
+    },
+    d(detaching) {
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function create_fragment$2(ctx) {
+  let link_1;
+  let t;
+  let if_block_anchor;
+  let if_block = ctx[5] && create_if_block$1(ctx);
+  return {
+    c() {
+      link_1 = element("link");
+      t = space();
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+      this.h();
+    },
+    l(nodes) {
+      const head_nodes = query_selector_all('[data-svelte="svelte-1y2tnph"]', document_1.head);
+      link_1 = claim_element(head_nodes, "LINK", { rel: true, type: true, href: true });
+      head_nodes.forEach(detach);
+      t = claim_space(nodes);
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+      this.h();
+    },
+    h() {
+      attr(link_1, "rel", "stylesheet");
+      attr(link_1, "type", "text/css");
+      attr(link_1, "href", "//fonts.googleapis.com/css?family=Luckiest+Guy");
+    },
+    m(target, anchor) {
+      append_hydration(document_1.head, link_1);
+      insert_hydration(target, t, anchor);
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+    },
+    p(ctx2, [dirty]) {
+      if (ctx2[5]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block = create_if_block$1(ctx2);
+          if_block.c();
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
       }
     },
     i: noop,
@@ -1184,10 +1225,11 @@ function create_fragment$2(ctx) {
     d(detaching) {
       detach(link_1);
       if (detaching)
-        detach(t0);
+        detach(t);
+      if (if_block)
+        if_block.d(detaching);
       if (detaching)
-        detach(span);
-      destroy_each(each_blocks, detaching);
+        detach(if_block_anchor);
     }
   };
 }
@@ -1200,44 +1242,54 @@ function instance$1($$self, $$props, $$invalidate) {
   let { arrowColor = "green" } = $$props;
   let { startOffset = "60%" } = $$props;
   const generateXcurve = link(bumpX);
+  let mounted;
   onMount(() => {
+    $$invalidate(5, mounted = true);
   });
   function genPath(link2) {
     var _a, _b, _c, _d;
-    let sourcex = (_a = data.nodes.find((el) => el.id === link2.source.id)) == null ? void 0 : _a.x;
-    let sourcey = (_b = data.nodes.find((el) => el.id === link2.source.id)) == null ? void 0 : _b.y;
-    let source = [sourcex, sourcey];
+    let sourceX = (_a = data.nodes.find((el) => el.id === link2.source.id)) == null ? void 0 : _a.x;
+    let sourceY = (_b = data.nodes.find((el) => el.id === link2.source.id)) == null ? void 0 : _b.y;
     let targetX = (_c = data.nodes.find((el) => el.id === link2.target.id)) == null ? void 0 : _c.x;
     let targetY = (_d = data.nodes.find((el) => el.id === link2.target.id)) == null ? void 0 : _d.y;
-    console.log(targetX, targetY);
-    let d = generateXcurve({ source, target: [targetX, targetY] });
+    let sourceEl = document.getElementById(link2.source.id);
+    let targetEl = document.getElementById(link2.target.id);
+    sourceX = sourceX + sourceEl.clientWidth / 2;
+    sourceY = sourceY + sourceEl.clientHeight / 2;
+    targetX = targetX + targetEl.clientWidth / 2;
+    targetY = targetY + targetEl.clientHeight / 2;
+    let d = generateXcurve({
+      source: [sourceX, sourceY],
+      target: [targetX, targetY]
+    });
     return d;
   }
   $$self.$$set = ($$props2) => {
     if ("data" in $$props2)
       $$invalidate(0, data = $$props2.data);
     if ("width" in $$props2)
-      $$invalidate(1, width = $$props2.width);
+      $$invalidate(7, width = $$props2.width);
     if ("height" in $$props2)
-      $$invalidate(2, height = $$props2.height);
+      $$invalidate(8, height = $$props2.height);
     if ("strokeColor" in $$props2)
-      $$invalidate(3, strokeColor = $$props2.strokeColor);
+      $$invalidate(1, strokeColor = $$props2.strokeColor);
     if ("strokeWidth" in $$props2)
-      $$invalidate(4, strokeWidth = $$props2.strokeWidth);
+      $$invalidate(2, strokeWidth = $$props2.strokeWidth);
     if ("arrowColor" in $$props2)
-      $$invalidate(5, arrowColor = $$props2.arrowColor);
+      $$invalidate(3, arrowColor = $$props2.arrowColor);
     if ("startOffset" in $$props2)
-      $$invalidate(6, startOffset = $$props2.startOffset);
+      $$invalidate(4, startOffset = $$props2.startOffset);
   };
   return [
     data,
-    width,
-    height,
     strokeColor,
     strokeWidth,
     arrowColor,
     startOffset,
-    genPath
+    mounted,
+    genPath,
+    width,
+    height
   ];
 }
 class Links extends SvelteComponent {
@@ -1245,12 +1297,12 @@ class Links extends SvelteComponent {
     super();
     init(this, options, instance$1, create_fragment$2, safe_not_equal, {
       data: 0,
-      width: 1,
-      height: 2,
-      strokeColor: 3,
-      strokeWidth: 4,
-      arrowColor: 5,
-      startOffset: 6
+      width: 7,
+      height: 8,
+      strokeColor: 1,
+      strokeWidth: 2,
+      arrowColor: 3,
+      startOffset: 4
     });
   }
 }
@@ -1258,7 +1310,7 @@ var Object_svelte_svelte_type_style_lang = "";
 var Demo_svelte_svelte_type_style_lang = "";
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[2] = list[i];
+  child_ctx[7] = list[i];
   child_ctx[8] = list;
   child_ctx[9] = i;
   return child_ctx;
@@ -1267,16 +1319,16 @@ function create_default_slot(ctx) {
   let panhandle;
   let updating_node;
   let t0;
-  let t1_value = ctx[2].id + "";
+  let t1_value = ctx[7].id + "";
   let t1;
   let t2;
   let current;
   function panhandle_node_binding(value) {
-    ctx[3](value, ctx[2], ctx[8], ctx[9]);
+    ctx[2](value, ctx[7], ctx[8], ctx[9]);
   }
   let panhandle_props = { nodes: ctx[1] };
-  if (ctx[2] !== void 0) {
-    panhandle_props.node = ctx[2];
+  if (ctx[7] !== void 0) {
+    panhandle_props.node = ctx[7];
   }
   panhandle = new PanHandle({ props: panhandle_props });
   binding_callbacks.push(() => bind(panhandle, "node", panhandle_node_binding));
@@ -1305,11 +1357,11 @@ function create_default_slot(ctx) {
       const panhandle_changes = {};
       if (!updating_node && dirty & 1) {
         updating_node = true;
-        panhandle_changes.node = ctx[2];
+        panhandle_changes.node = ctx[7];
         add_flush_callback(() => updating_node = false);
       }
       panhandle.$set(panhandle_changes);
-      if ((!current || dirty & 1) && t1_value !== (t1_value = ctx[2].id + ""))
+      if ((!current || dirty & 1) && t1_value !== (t1_value = ctx[7].id + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -1340,10 +1392,10 @@ function create_each_block(key_1, ctx) {
   let updating_node;
   let current;
   function connectable_data_binding(value) {
-    ctx[4](value);
+    ctx[3](value);
   }
   function connectable_node_binding(value) {
-    ctx[5](value, ctx[2], ctx[8], ctx[9]);
+    ctx[4](value, ctx[7], ctx[8], ctx[9]);
   }
   let connectable_props = {
     $$slots: { default: [create_default_slot] },
@@ -1352,8 +1404,8 @@ function create_each_block(key_1, ctx) {
   if (ctx[0] !== void 0) {
     connectable_props.data = ctx[0];
   }
-  if (ctx[2] !== void 0) {
-    connectable_props.node = ctx[2];
+  if (ctx[7] !== void 0) {
+    connectable_props.node = ctx[7];
   }
   connectable2 = new Connectable({ props: connectable_props });
   binding_callbacks.push(() => bind(connectable2, "data", connectable_data_binding));
@@ -1392,7 +1444,7 @@ function create_each_block(key_1, ctx) {
       }
       if (!updating_node && dirty & 1) {
         updating_node = true;
-        connectable_changes.node = ctx[2];
+        connectable_changes.node = ctx[7];
         add_flush_callback(() => updating_node = false);
       }
       connectable2.$set(connectable_changes);
@@ -1457,7 +1509,7 @@ function create_fragment$1(ctx) {
   let t;
   let current;
   let each_value = ctx[0].nodes;
-  const get_key = (ctx2) => ctx2[2].id;
+  const get_key = (ctx2) => ctx2[7].id;
   for (let i = 0; i < each_value.length; i += 1) {
     let child_ctx = get_each_context(ctx, each_value, i);
     let key = get_key(child_ctx);
@@ -1556,21 +1608,20 @@ function create_fragment$1(ctx) {
 }
 function instance($$self, $$props, $$invalidate) {
   let nodes = { connections: [] };
-  let node = { x: 10, y: 10, connections: [] };
   let data = {
     nodes: [
       {
         id: "1",
         group: 1,
         connectable: true,
-        x: 10,
-        y: 10
+        x: 100,
+        y: 100
       },
       {
         id: "2",
         group: 2,
         connectable: false,
-        x: 150,
+        x: 250,
         y: 150
       },
       {
@@ -1583,7 +1634,7 @@ function instance($$self, $$props, $$invalidate) {
     ],
     links: [{ source: { id: "1" }, target: { id: "2" } }]
   };
-  function panhandle_node_binding(value, node2, each_value, node_index) {
+  function panhandle_node_binding(value, node, each_value, node_index) {
     each_value[node_index] = value;
     $$invalidate(0, data);
   }
@@ -1591,14 +1642,13 @@ function instance($$self, $$props, $$invalidate) {
     data = value;
     $$invalidate(0, data);
   }
-  function connectable_node_binding(value, node2, each_value, node_index) {
+  function connectable_node_binding(value, node, each_value, node_index) {
     each_value[node_index] = value;
     $$invalidate(0, data);
   }
   return [
     data,
     nodes,
-    node,
     panhandle_node_binding,
     connectable_data_binding,
     connectable_node_binding
@@ -1648,4 +1698,4 @@ class Routes extends SvelteComponent {
   }
 }
 export { Routes as default };
-//# sourceMappingURL=index.svelte-0e4f1cd3.js.map
+//# sourceMappingURL=index.svelte-265f3fb2.js.map

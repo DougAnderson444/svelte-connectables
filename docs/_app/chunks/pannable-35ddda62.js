@@ -3,6 +3,7 @@ function pannable(node) {
   let y;
   function handleMousedown(event) {
     event.stopPropagation();
+    event.preventDefault();
     const c = event.touches ? event.touches[0] : event;
     x = c.clientX;
     y = c.clientY;
@@ -46,4 +47,4 @@ function pannable(node) {
   };
 }
 export { pannable };
-//# sourceMappingURL=pannable-fea7e42a.js.map
+//# sourceMappingURL=pannable-35ddda62.js.map
