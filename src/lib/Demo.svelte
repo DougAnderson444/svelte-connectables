@@ -15,7 +15,7 @@
 	let data = {
 		nodes: [
 			{ id: '1', group: 1, connectable: true, x: 100, y: 100 },
-			{ id: '2', group: 2, connectable: false, x: 250, y: 150 },
+			{ id: '2', group: 2, connectable: false, x: 414, y: 190 },
 			{ id: '3', group: 2, connectable: false, x: 250, y: 300 }
 		],
 		links: [{ source: { id: '1' }, target: { id: '2' } }]
