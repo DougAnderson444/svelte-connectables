@@ -83,11 +83,6 @@ export function connectable(node, options) {
 			return;
 		}
 
-		if (e.target !== node) {
-			printDebug(() => `must connect from the connectable, not a child element: ${e.button}`);
-			return;
-		}
-
 		e.stopPropagation();
 		const c = e.touches ? e.touches[0] : e;
 		dragStartMousePosition = { x: c.clientX, y: c.clientY };
