@@ -1,21 +1,33 @@
-import { SvelteComponent, init, safe_not_equal, create_slot, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, transition_out } from "../chunks/vendor-60f50316.js";
+import { SvelteComponent, init, safe_not_equal, create_slot, element, claim_element, children, detach, attr, insert_hydration, update_slot_base, get_all_dirty_from_scope, get_slot_changes, transition_in, transition_out } from "../chunks/vendor-60f50316.js";
 var app = "";
+var __layout_svelte_svelte_type_style_lang = "";
 function create_fragment(ctx) {
+  let main;
   let current;
   const default_slot_template = ctx[1].default;
   const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
   return {
     c() {
+      main = element("main");
       if (default_slot)
         default_slot.c();
+      this.h();
     },
     l(nodes) {
+      main = claim_element(nodes, "MAIN", { class: true });
+      var main_nodes = children(main);
       if (default_slot)
-        default_slot.l(nodes);
+        default_slot.l(main_nodes);
+      main_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(main, "class", "svelte-hxjjwn");
     },
     m(target, anchor) {
+      insert_hydration(target, main, anchor);
       if (default_slot) {
-        default_slot.m(target, anchor);
+        default_slot.m(main, null);
       }
       current = true;
     },
@@ -37,6 +49,8 @@ function create_fragment(ctx) {
       current = false;
     },
     d(detaching) {
+      if (detaching)
+        detach(main);
       if (default_slot)
         default_slot.d(detaching);
     }
@@ -57,4 +71,4 @@ class _layout extends SvelteComponent {
   }
 }
 export { _layout as default };
-//# sourceMappingURL=__layout.svelte-5b826b98.js.map
+//# sourceMappingURL=__layout.svelte-e3635d8a.js.map

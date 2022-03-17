@@ -1,6 +1,4 @@
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -16,7 +14,6 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 import { SvelteComponent, init, safe_not_equal, svg_element, claim_svg_element, children, detach, attr, insert_hydration, append_hydration, text, space, element, claim_text, claim_space, query_selector_all, claim_element, xlink_attr, set_data, noop, link, bumpX, onMount, binding_callbacks, create_slot, create_component, claim_component, mount_component, transition_in, transition_out, destroy_component, empty, set_style, action_destroyer, listen, update_slot_base, get_all_dirty_from_scope, get_slot_changes, group_outros, check_outros, run_all, createEventDispatcher, destroy_each, globals, add_flush_callback, update_keyed_each, bind, outro_and_destroy_block } from "../chunks/vendor-60f50316.js";
 import { __vitePreload } from "../chunks/preload-helper-8499f0b6.js";
 const MIN_MOVEMENT_BEFORE_DRAG_START_PX = 3;
@@ -42,10 +39,6 @@ function connectable(node, options) {
     }
     if (e.button) {
       printDebug(() => `ignoring none left click button: ${e.button}`);
-      return;
-    }
-    if (e.target !== node) {
-      printDebug(() => `must connect from the connectable, not a child element: ${e.button}`);
       return;
     }
     e.stopPropagation();
@@ -120,7 +113,7 @@ function connectable(node, options) {
   };
 }
 var Link_svelte_svelte_type_style_lang = "";
-function create_if_block$4(ctx) {
+function create_if_block$6(ctx) {
   let g;
   let path;
   return {
@@ -179,7 +172,7 @@ function create_if_block$4(ctx) {
     }
   };
 }
-function create_fragment$5(ctx) {
+function create_fragment$7(ctx) {
   let t0;
   let t1;
   let t2;
@@ -197,7 +190,7 @@ function create_fragment$5(ctx) {
   let t5;
   let textPath1;
   let t6;
-  let if_block = ctx[7] && ctx[8] && create_if_block$4(ctx);
+  let if_block = ctx[7] && ctx[8] && create_if_block$6(ctx);
   return {
     c() {
       t0 = text("y2: ");
@@ -332,7 +325,7 @@ function create_fragment$5(ctx) {
         if (if_block) {
           if_block.p(ctx2, dirty);
         } else {
-          if_block = create_if_block$4(ctx2);
+          if_block = create_if_block$6(ctx2);
           if_block.c();
           if_block.m(svg_1, text_1);
         }
@@ -374,7 +367,7 @@ function create_fragment$5(ctx) {
     }
   };
 }
-function instance$4($$self, $$props, $$invalidate) {
+function instance$6($$self, $$props, $$invalidate) {
   let sourceObj;
   let d;
   let { target } = $$props;
@@ -423,9 +416,9 @@ function instance$4($$self, $$props, $$invalidate) {
       $$invalidate(5, startOffset = $$props2.startOffset);
   };
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 14464) {
+    if ($$self.$$.dirty & 12288) {
       if (mounted) {
-        $$invalidate(7, x1 = Math.floor(x1 < target.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft));
+        $$invalidate(7, x1 = Math.floor(source.offsetLeft + source.clientWidth / 2));
       }
     }
     if ($$self.$$.dirty & 12288) {
@@ -435,7 +428,7 @@ function instance$4($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 10304) {
       if (mounted) {
-        $$invalidate(14, x2 = Math.floor(target.offsetLeft - container.offsetLeft));
+        $$invalidate(14, x2 = Math.floor(target.offsetLeft + target.offsetWidth / 2 - container.getBoundingClientRect().x));
       }
     }
     if ($$self.$$.dirty & 10304) {
@@ -448,12 +441,6 @@ function instance$4($$self, $$props, $$invalidate) {
     }
     if ($$self.$$.dirty & 65536) {
       $$invalidate(10, d = generateXcurve(sourceObj));
-    }
-    if ($$self.$$.dirty & 65600) {
-      container && sourceObj && console.log({
-        container: container.getBoundingClientRect(),
-        sourceObj
-      });
     }
   };
   return [
@@ -481,7 +468,7 @@ function instance$4($$self, $$props, $$invalidate) {
 class Link extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$4, create_fragment$5, safe_not_equal, {
+    init(this, options, instance$6, create_fragment$7, safe_not_equal, {
       target: 11,
       source: 12,
       width: 0,
@@ -495,7 +482,7 @@ class Link extends SvelteComponent {
 }
 var Pannable_svelte_svelte_type_style_lang = "";
 var Connectable_svelte_svelte_type_style_lang = "";
-function create_if_block$3(ctx) {
+function create_if_block$5(ctx) {
   let link2;
   let current;
   link2 = new Link({
@@ -538,7 +525,7 @@ function create_if_block$3(ctx) {
     }
   };
 }
-function create_fragment$4(ctx) {
+function create_fragment$6(ctx) {
   let div;
   let div_id_value;
   let t;
@@ -548,7 +535,7 @@ function create_fragment$4(ctx) {
   let dispose;
   const default_slot_template = ctx[10].default;
   const default_slot = create_slot(default_slot_template, ctx, ctx[9], null);
-  let if_block = ctx[3] && create_if_block$3(ctx);
+  let if_block = ctx[3] && create_if_block$5(ctx);
   return {
     c() {
       div = element("div");
@@ -573,7 +560,7 @@ function create_fragment$4(ctx) {
       this.h();
     },
     h() {
-      attr(div, "class", "endpoint svelte-1fwsbir");
+      attr(div, "class", "endpoint svelte-1kyevaz");
       attr(div, "id", div_id_value = ctx[0].id);
       set_style(div, "left", ctx[5] + "px");
       set_style(div, "top", ctx[4] + "px");
@@ -619,7 +606,7 @@ function create_fragment$4(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block$3(ctx2);
+          if_block = create_if_block$5(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -660,7 +647,7 @@ function create_fragment$4(ctx) {
     }
   };
 }
-function instance$3($$self, $$props, $$invalidate) {
+function instance$5($$self, $$props, $$invalidate) {
   let x;
   let y;
   let { $$slots: slots = {}, $$scope } = $$props;
@@ -670,10 +657,10 @@ function instance$3($$self, $$props, $$invalidate) {
   let target;
   let connectingNow = false;
   function handleConnecting(event) {
+    var _a, _b;
     $$invalidate(3, connectingNow = true);
-    console.log("CONNECTing");
     $$invalidate(1, source = event.detail.node);
-    if (event.detail.x && event.detail.x !== (target == null ? void 0 : target.offsetLeft) && event.detail.y && event.detail.y !== (target == null ? void 0 : target.offsetTop))
+    if (((_a = event.detail) == null ? void 0 : _a.x) !== (target == null ? void 0 : target.offsetLeft) && ((_b = event.detail) == null ? void 0 : _b.y) !== (target == null ? void 0 : target.offsetTop))
       $$invalidate(2, target = {
         offsetLeft: event.detail.x,
         offsetTop: event.detail.y,
@@ -683,16 +670,19 @@ function instance$3($$self, $$props, $$invalidate) {
   }
   function handleConnected(event) {
     $$invalidate(3, connectingNow = false);
-    if (!event.detail.target.id)
+    function getID(n) {
+      if (n.id)
+        return n.id;
+      if (n.parentNode)
+        return getID(n.parentNode);
+      return false;
+    }
+    let id = getID(event.detail.target);
+    if (!id || id == node.id)
       return;
-    console.log("CONNECTED firing");
-    $$invalidate(8, data.links = [
-      ...data.links,
-      {
-        source: { id: node.id },
-        target: { id: event.detail.target.id }
-      }
-    ], data);
+    if (data.links.find((el) => el.source.id == node.id && el.target.id == id) !== void 0)
+      return;
+    $$invalidate(8, data.links = [...data.links, { source: { id: node.id }, target: { id } }], data);
   }
   $$self.$$set = ($$props2) => {
     if ("node" in $$props2)
@@ -727,11 +717,11 @@ function instance$3($$self, $$props, $$invalidate) {
 class Connectable extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$3, create_fragment$4, safe_not_equal, { node: 0, data: 8 });
+    init(this, options, instance$5, create_fragment$6, safe_not_equal, { node: 0, data: 8 });
   }
 }
 var PanHandle_svelte_svelte_type_style_lang = "";
-function create_if_block$2(ctx) {
+function create_if_block$4(ctx) {
   let div;
   let svg;
   let defs;
@@ -806,9 +796,9 @@ function create_if_block$2(ctx) {
     }
   };
 }
-function create_fragment$3(ctx) {
+function create_fragment$5(ctx) {
   let if_block_anchor;
-  let if_block = ctx[0] && create_if_block$2(ctx);
+  let if_block = ctx[0] && create_if_block$4(ctx);
   return {
     c() {
       if (if_block)
@@ -830,7 +820,7 @@ function create_fragment$3(ctx) {
         if (if_block) {
           if_block.p(ctx2, dirty);
         } else {
-          if_block = create_if_block$2(ctx2);
+          if_block = create_if_block$4(ctx2);
           if_block.c();
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
         }
@@ -849,8 +839,7 @@ function create_fragment$3(ctx) {
     }
   };
 }
-function instance$2($$self, $$props, $$invalidate) {
-  let { nodes } = $$props;
+function instance$4($$self, $$props, $$invalidate) {
   let { node } = $$props;
   let { mouseMoving = false } = $$props;
   const dispatch = createEventDispatcher();
@@ -859,58 +848,43 @@ function instance$2($$self, $$props, $$invalidate) {
     $$invalidate(0, { pannable } = await __vitePreload(() => import("../chunks/pannable-35ddda62.js"), true ? [] : void 0), pannable);
   });
   function handlePanStart(event) {
-    $$invalidate(6, mouseMoving = true);
+    $$invalidate(5, mouseMoving = true);
     dispatch("resimulate", "resimulate");
   }
   function handlePanMove(event) {
-    $$invalidate(6, mouseMoving = true);
-    $$invalidate(5, node.x = node.x + event.detail.dx, node);
-    $$invalidate(5, node.y = node.y + event.detail.dy, node);
-    $$invalidate(5, node);
-    $$invalidate(4, nodes[node.index] = __spreadProps(__spreadValues({}, nodes[node.index]), {
-      x: node.x,
-      y: node.y
-    }), nodes);
-    $$invalidate(4, nodes);
+    $$invalidate(5, mouseMoving = true);
+    $$invalidate(4, node.x = node.x + event.detail.dx, node);
+    $$invalidate(4, node.y = node.y + event.detail.dy, node);
+    $$invalidate(4, node);
   }
   function handlePanEnd(event) {
-    $$invalidate(6, mouseMoving = false);
-    $$invalidate(4, nodes);
+    $$invalidate(5, mouseMoving = false);
+    $$invalidate(4, node);
     dispatch("resimulate", "resimulate");
   }
   $$self.$$set = ($$props2) => {
-    if ("nodes" in $$props2)
-      $$invalidate(4, nodes = $$props2.nodes);
     if ("node" in $$props2)
-      $$invalidate(5, node = $$props2.node);
+      $$invalidate(4, node = $$props2.node);
     if ("mouseMoving" in $$props2)
-      $$invalidate(6, mouseMoving = $$props2.mouseMoving);
+      $$invalidate(5, mouseMoving = $$props2.mouseMoving);
   };
-  return [
-    pannable,
-    handlePanStart,
-    handlePanMove,
-    handlePanEnd,
-    nodes,
-    node,
-    mouseMoving
-  ];
+  return [pannable, handlePanStart, handlePanMove, handlePanEnd, node, mouseMoving];
 }
 class PanHandle extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$2, create_fragment$3, safe_not_equal, { nodes: 4, node: 5, mouseMoving: 6 });
+    init(this, options, instance$4, create_fragment$5, safe_not_equal, { node: 4, mouseMoving: 5 });
   }
 }
 var Links_svelte_svelte_type_style_lang = "";
 const { document: document_1 } = globals;
-function get_each_context$1(ctx, list, i) {
+function get_each_context$2(ctx, list, i) {
   const child_ctx = ctx.slice();
   child_ctx[10] = list[i];
   child_ctx[12] = i;
   return child_ctx;
 }
-function create_if_block$1(ctx) {
+function create_if_block$3(ctx) {
   let div;
   let svg;
   let defs;
@@ -919,7 +893,7 @@ function create_if_block$1(ctx) {
   let each_value = ctx[0].links;
   let each_blocks = [];
   for (let i = 0; i < each_value.length; i += 1) {
-    each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
   }
   return {
     c() {
@@ -991,11 +965,11 @@ function create_if_block$1(ctx) {
         each_value = ctx2[0].links;
         let i;
         for (i = 0; i < each_value.length; i += 1) {
-          const child_ctx = get_each_context$1(ctx2, each_value, i);
+          const child_ctx = get_each_context$2(ctx2, each_value, i);
           if (each_blocks[i]) {
             each_blocks[i].p(child_ctx, dirty);
           } else {
-            each_blocks[i] = create_each_block$1(child_ctx);
+            each_blocks[i] = create_each_block$2(child_ctx);
             each_blocks[i].c();
             each_blocks[i].m(svg, null);
           }
@@ -1013,7 +987,7 @@ function create_if_block$1(ctx) {
     }
   };
 }
-function create_if_block_1(ctx) {
+function create_if_block_1$1(ctx) {
   let g;
   let path;
   let path_d_value;
@@ -1129,9 +1103,9 @@ function create_if_block_1(ctx) {
     }
   };
 }
-function create_each_block$1(ctx) {
+function create_each_block$2(ctx) {
   let if_block_anchor;
-  let if_block = ctx[10] && ctx[5] && create_if_block_1(ctx);
+  let if_block = ctx[10] && ctx[5] && create_if_block_1$1(ctx);
   return {
     c() {
       if (if_block)
@@ -1153,7 +1127,7 @@ function create_each_block$1(ctx) {
         if (if_block) {
           if_block.p(ctx2, dirty);
         } else {
-          if_block = create_if_block_1(ctx2);
+          if_block = create_if_block_1$1(ctx2);
           if_block.c();
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
         }
@@ -1170,11 +1144,11 @@ function create_each_block$1(ctx) {
     }
   };
 }
-function create_fragment$2(ctx) {
+function create_fragment$4(ctx) {
   let link_1;
   let t;
   let if_block_anchor;
-  let if_block = ctx[5] && create_if_block$1(ctx);
+  let if_block = ctx[5] && create_if_block$3(ctx);
   return {
     c() {
       link_1 = element("link");
@@ -1211,7 +1185,7 @@ function create_fragment$2(ctx) {
         if (if_block) {
           if_block.p(ctx2, dirty);
         } else {
-          if_block = create_if_block$1(ctx2);
+          if_block = create_if_block$3(ctx2);
           if_block.c();
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
         }
@@ -1233,7 +1207,7 @@ function create_fragment$2(ctx) {
     }
   };
 }
-function instance$1($$self, $$props, $$invalidate) {
+function instance$3($$self, $$props, $$invalidate) {
   let { data } = $$props;
   let { width = 500 } = $$props;
   let { height = 500 } = $$props;
@@ -1295,7 +1269,7 @@ function instance$1($$self, $$props, $$invalidate) {
 class Links extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance$1, create_fragment$2, safe_not_equal, {
+    init(this, options, instance$3, create_fragment$4, safe_not_equal, {
       data: 0,
       width: 7,
       height: 8,
@@ -1307,28 +1281,561 @@ class Links extends SvelteComponent {
   }
 }
 var Object_svelte_svelte_type_style_lang = "";
+function get_each_context$1(ctx, list, i) {
+  const child_ctx = ctx.slice();
+  child_ctx[1] = list[i][0];
+  child_ctx[0] = list[i][1];
+  return child_ctx;
+}
+function create_if_block$2(ctx) {
+  let ul;
+  let current;
+  let each_value = [...Object.entries(ctx[0])];
+  let each_blocks = [];
+  for (let i = 0; i < each_value.length; i += 1) {
+    each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+  }
+  const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
+    each_blocks[i] = null;
+  });
+  return {
+    c() {
+      ul = element("ul");
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].c();
+      }
+      this.h();
+    },
+    l(nodes) {
+      ul = claim_element(nodes, "UL", { class: true });
+      var ul_nodes = children(ul);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].l(ul_nodes);
+      }
+      ul_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(ul, "class", "svelte-4mp91d");
+    },
+    m(target, anchor) {
+      insert_hydration(target, ul, anchor);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].m(ul, null);
+      }
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (dirty & 1) {
+        each_value = [...Object.entries(ctx2[0])];
+        let i;
+        for (i = 0; i < each_value.length; i += 1) {
+          const child_ctx = get_each_context$1(ctx2, each_value, i);
+          if (each_blocks[i]) {
+            each_blocks[i].p(child_ctx, dirty);
+            transition_in(each_blocks[i], 1);
+          } else {
+            each_blocks[i] = create_each_block$1(child_ctx);
+            each_blocks[i].c();
+            transition_in(each_blocks[i], 1);
+            each_blocks[i].m(ul, null);
+          }
+        }
+        group_outros();
+        for (i = each_value.length; i < each_blocks.length; i += 1) {
+          out(i);
+        }
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      for (let i = 0; i < each_value.length; i += 1) {
+        transition_in(each_blocks[i]);
+      }
+      current = true;
+    },
+    o(local) {
+      each_blocks = each_blocks.filter(Boolean);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        transition_out(each_blocks[i]);
+      }
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(ul);
+      destroy_each(each_blocks, detaching);
+    }
+  };
+}
+function create_else_block(ctx) {
+  let t0_value = ctx[1] + "";
+  let t0;
+  let t1;
+  let t2_value = ctx[0] + "";
+  let t2;
+  return {
+    c() {
+      t0 = text(t0_value);
+      t1 = text("\r\n					:\r\n					");
+      t2 = text(t2_value);
+    },
+    l(nodes) {
+      t0 = claim_text(nodes, t0_value);
+      t1 = claim_text(nodes, "\r\n					:\r\n					");
+      t2 = claim_text(nodes, t2_value);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t0, anchor);
+      insert_hydration(target, t1, anchor);
+      insert_hydration(target, t2, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 1 && t0_value !== (t0_value = ctx2[1] + ""))
+        set_data(t0, t0_value);
+      if (dirty & 1 && t2_value !== (t2_value = ctx2[0] + ""))
+        set_data(t2, t2_value);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(t0);
+      if (detaching)
+        detach(t1);
+      if (detaching)
+        detach(t2);
+    }
+  };
+}
+function create_if_block_1(ctx) {
+  let t0_value = ctx[1] + "";
+  let t0;
+  let t1;
+  let object_1;
+  let current;
+  object_1 = new Object_1({
+    props: { key: ctx[1], val: ctx[0] }
+  });
+  return {
+    c() {
+      t0 = text(t0_value);
+      t1 = space();
+      create_component(object_1.$$.fragment);
+    },
+    l(nodes) {
+      t0 = claim_text(nodes, t0_value);
+      t1 = claim_space(nodes);
+      claim_component(object_1.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      insert_hydration(target, t0, anchor);
+      insert_hydration(target, t1, anchor);
+      mount_component(object_1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if ((!current || dirty & 1) && t0_value !== (t0_value = ctx2[1] + ""))
+        set_data(t0, t0_value);
+      const object_1_changes = {};
+      if (dirty & 1)
+        object_1_changes.key = ctx2[1];
+      if (dirty & 1)
+        object_1_changes.val = ctx2[0];
+      object_1.$set(object_1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(object_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(object_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t0);
+      if (detaching)
+        detach(t1);
+      destroy_component(object_1, detaching);
+    }
+  };
+}
+function create_each_block$1(ctx) {
+  let li;
+  let current_block_type_index;
+  let if_block;
+  let t;
+  let current;
+  const if_block_creators = [create_if_block_1, create_else_block];
+  const if_blocks = [];
+  function select_block_type(ctx2, dirty) {
+    if (typeof ctx2[0] === "object")
+      return 0;
+    return 1;
+  }
+  current_block_type_index = select_block_type(ctx);
+  if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+  return {
+    c() {
+      li = element("li");
+      if_block.c();
+      t = space();
+    },
+    l(nodes) {
+      li = claim_element(nodes, "LI", {});
+      var li_nodes = children(li);
+      if_block.l(li_nodes);
+      t = claim_space(li_nodes);
+      li_nodes.forEach(detach);
+    },
+    m(target, anchor) {
+      insert_hydration(target, li, anchor);
+      if_blocks[current_block_type_index].m(li, null);
+      append_hydration(li, t);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      let previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type(ctx2);
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(ctx2, dirty);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, () => {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx2);
+          if_block.c();
+        } else {
+          if_block.p(ctx2, dirty);
+        }
+        transition_in(if_block, 1);
+        if_block.m(li, t);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(li);
+      if_blocks[current_block_type_index].d();
+    }
+  };
+}
+function create_fragment$3(ctx) {
+  let if_block_anchor;
+  let current;
+  let if_block = ctx[0] && create_if_block$2(ctx);
+  return {
+    c() {
+      if (if_block)
+        if_block.c();
+      if_block_anchor = empty();
+    },
+    l(nodes) {
+      if (if_block)
+        if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m(target, anchor) {
+      if (if_block)
+        if_block.m(target, anchor);
+      insert_hydration(target, if_block_anchor, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (ctx2[0]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty & 1) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block$2(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function instance$2($$self, $$props, $$invalidate) {
+  let { val } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("val" in $$props2)
+      $$invalidate(0, val = $$props2.val);
+  };
+  return [val];
+}
+class Object_1 extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$2, create_fragment$3, safe_not_equal, { val: 0 });
+  }
+}
+var Resizable_svelte_svelte_type_style_lang = "";
+function create_if_block$1(ctx) {
+  let div;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      div = element("div");
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true });
+      children(div).forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "svlt-grid-resizer svelte-1r2mzl3");
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (!mounted) {
+        dispose = listen(div, "pointerdown", ctx[6]);
+        mounted = true;
+      }
+    },
+    p: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function create_fragment$2(ctx) {
+  let div;
+  let t;
+  let current;
+  const default_slot_template = ctx[9].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[8], null);
+  let if_block = ctx[0] && create_if_block$1(ctx);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      t = space();
+      if (if_block)
+        if_block.c();
+      this.h();
+    },
+    l(nodes) {
+      div = claim_element(nodes, "DIV", { class: true, style: true });
+      var div_nodes = children(div);
+      if (default_slot)
+        default_slot.l(div_nodes);
+      t = claim_space(div_nodes);
+      if (if_block)
+        if_block.l(div_nodes);
+      div_nodes.forEach(detach);
+      this.h();
+    },
+    h() {
+      attr(div, "class", "resizable svelte-1r2mzl3");
+      set_style(div, "width", (ctx[5] ? ctx[1].width : ctx[3]) + "px");
+      set_style(div, "height", (ctx[5] ? ctx[1].height : ctx[4]) + "px");
+    },
+    m(target, anchor) {
+      insert_hydration(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      append_hydration(div, t);
+      if (if_block)
+        if_block.m(div, null);
+      ctx[10](div);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 256)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[8], !current ? get_all_dirty_from_scope(ctx2[8]) : get_slot_changes(default_slot_template, ctx2[8], dirty, null), null);
+        }
+      }
+      if (ctx2[0]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+        } else {
+          if_block = create_if_block$1(ctx2);
+          if_block.c();
+          if_block.m(div, null);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
+      }
+      if (!current || dirty & 42) {
+        set_style(div, "width", (ctx2[5] ? ctx2[1].width : ctx2[3]) + "px");
+      }
+      if (!current || dirty & 50) {
+        set_style(div, "height", (ctx2[5] ? ctx2[1].height : ctx2[4]) + "px");
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+      if (if_block)
+        if_block.d();
+      ctx[10](null);
+    }
+  };
+}
+function instance$1($$self, $$props, $$invalidate) {
+  var _a, _b;
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let resizableDiv;
+  let { node } = $$props;
+  let { resizable = true } = $$props;
+  let width = ((_a = resizableDiv == null ? void 0 : resizableDiv.parentNode) == null ? void 0 : _a.offsetWidth) || 100;
+  let height = ((_b = resizableDiv == null ? void 0 : resizableDiv.parentNode) == null ? void 0 : _b.offsetheight) || 100;
+  let newSize = { width, height };
+  let initSize = { width: 0, height: 0 };
+  let resizeInitPos = { x: 0, y: 0 };
+  let active = false;
+  const resizePointerDown = (e) => {
+    e.stopPropagation();
+    const { pageX, pageY } = e;
+    resizeInitPos = { x: pageX, y: pageY };
+    initSize = { width, height };
+    $$invalidate(1, newSize = { width, height });
+    $$invalidate(5, active = true);
+    window.addEventListener("pointermove", resizePointerMove);
+    window.addEventListener("pointerup", resizePointerUp);
+  };
+  const resizePointerMove = ({ pageX, pageY }) => {
+    $$invalidate(1, newSize.width = initSize.width + pageX - resizeInitPos.x, newSize);
+    $$invalidate(1, newSize.height = initSize.height + pageY - resizeInitPos.y, newSize);
+  };
+  const resizePointerUp = (e) => {
+    e.stopPropagation();
+    $$invalidate(3, width = newSize.width);
+    $$invalidate(4, height = newSize.height);
+    $$invalidate(5, active = false);
+    window.removeEventListener("pointermove", resizePointerMove);
+    window.removeEventListener("pointerup", resizePointerUp);
+  };
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      resizableDiv = $$value;
+      $$invalidate(2, resizableDiv);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("node" in $$props2)
+      $$invalidate(7, node = $$props2.node);
+    if ("resizable" in $$props2)
+      $$invalidate(0, resizable = $$props2.resizable);
+    if ("$$scope" in $$props2)
+      $$invalidate(8, $$scope = $$props2.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 2) {
+      $$invalidate(7, node.width = newSize.width, node);
+    }
+    if ($$self.$$.dirty & 2) {
+      $$invalidate(7, node.height = newSize.height, node);
+    }
+  };
+  return [
+    resizable,
+    newSize,
+    resizableDiv,
+    width,
+    height,
+    active,
+    resizePointerDown,
+    node,
+    $$scope,
+    slots,
+    div_binding
+  ];
+}
+class Resizable extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance$1, create_fragment$2, safe_not_equal, { node: 7, resizable: 0 });
+  }
+}
 var Demo_svelte_svelte_type_style_lang = "";
 function get_each_context(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[7] = list[i];
-  child_ctx[8] = list;
-  child_ctx[9] = i;
+  child_ctx[8] = list[i];
+  child_ctx[9] = list;
+  child_ctx[10] = i;
   return child_ctx;
 }
-function create_default_slot(ctx) {
+function create_default_slot_1(ctx) {
   let panhandle;
   let updating_node;
   let t0;
-  let t1_value = ctx[7].id + "";
+  let t1_value = ctx[8].id + "";
   let t1;
   let t2;
+  let span;
+  let t3;
   let current;
   function panhandle_node_binding(value) {
-    ctx[2](value, ctx[7], ctx[8], ctx[9]);
+    ctx[1](value, ctx[8], ctx[9], ctx[10]);
   }
-  let panhandle_props = { nodes: ctx[1] };
-  if (ctx[7] !== void 0) {
-    panhandle_props.node = ctx[7];
+  let panhandle_props = {};
+  if (ctx[8] !== void 0) {
+    panhandle_props.node = ctx[8];
   }
   panhandle = new PanHandle({ props: panhandle_props });
   binding_callbacks.push(() => bind(panhandle, "node", panhandle_node_binding));
@@ -1337,19 +1844,27 @@ function create_default_slot(ctx) {
       create_component(panhandle.$$.fragment);
       t0 = space();
       t1 = text(t1_value);
-      t2 = text(" Connect from Me");
+      t2 = space();
+      span = element("span");
+      t3 = text("Connect from Me");
     },
     l(nodes) {
       claim_component(panhandle.$$.fragment, nodes);
       t0 = claim_space(nodes);
       t1 = claim_text(nodes, t1_value);
-      t2 = claim_text(nodes, " Connect from Me");
+      t2 = claim_space(nodes);
+      span = claim_element(nodes, "SPAN", {});
+      var span_nodes = children(span);
+      t3 = claim_text(span_nodes, "Connect from Me");
+      span_nodes.forEach(detach);
     },
     m(target, anchor) {
       mount_component(panhandle, target, anchor);
       insert_hydration(target, t0, anchor);
       insert_hydration(target, t1, anchor);
       insert_hydration(target, t2, anchor);
+      insert_hydration(target, span, anchor);
+      append_hydration(span, t3);
       current = true;
     },
     p(new_ctx, dirty) {
@@ -1357,11 +1872,11 @@ function create_default_slot(ctx) {
       const panhandle_changes = {};
       if (!updating_node && dirty & 1) {
         updating_node = true;
-        panhandle_changes.node = ctx[7];
+        panhandle_changes.node = ctx[8];
         add_flush_callback(() => updating_node = false);
       }
       panhandle.$set(panhandle_changes);
-      if ((!current || dirty & 1) && t1_value !== (t1_value = ctx[7].id + ""))
+      if ((!current || dirty & 1) && t1_value !== (t1_value = ctx[8].id + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -1382,6 +1897,63 @@ function create_default_slot(ctx) {
         detach(t1);
       if (detaching)
         detach(t2);
+      if (detaching)
+        detach(span);
+    }
+  };
+}
+function create_default_slot(ctx) {
+  let resizable;
+  let updating_node;
+  let current;
+  function resizable_node_binding(value) {
+    ctx[2](value, ctx[8], ctx[9], ctx[10]);
+  }
+  let resizable_props = {
+    $$slots: { default: [create_default_slot_1] },
+    $$scope: { ctx }
+  };
+  if (ctx[8] !== void 0) {
+    resizable_props.node = ctx[8];
+  }
+  resizable = new Resizable({ props: resizable_props });
+  binding_callbacks.push(() => bind(resizable, "node", resizable_node_binding));
+  return {
+    c() {
+      create_component(resizable.$$.fragment);
+    },
+    l(nodes) {
+      claim_component(resizable.$$.fragment, nodes);
+    },
+    m(target, anchor) {
+      mount_component(resizable, target, anchor);
+      current = true;
+    },
+    p(new_ctx, dirty) {
+      ctx = new_ctx;
+      const resizable_changes = {};
+      if (dirty & 2049) {
+        resizable_changes.$$scope = { dirty, ctx };
+      }
+      if (!updating_node && dirty & 1) {
+        updating_node = true;
+        resizable_changes.node = ctx[8];
+        add_flush_callback(() => updating_node = false);
+      }
+      resizable.$set(resizable_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(resizable.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(resizable.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(resizable, detaching);
     }
   };
 }
@@ -1395,7 +1967,7 @@ function create_each_block(key_1, ctx) {
     ctx[3](value);
   }
   function connectable_node_binding(value) {
-    ctx[4](value, ctx[7], ctx[8], ctx[9]);
+    ctx[4](value, ctx[8], ctx[9], ctx[10]);
   }
   let connectable_props = {
     $$slots: { default: [create_default_slot] },
@@ -1404,8 +1976,8 @@ function create_each_block(key_1, ctx) {
   if (ctx[0] !== void 0) {
     connectable_props.data = ctx[0];
   }
-  if (ctx[7] !== void 0) {
-    connectable_props.node = ctx[7];
+  if (ctx[8] !== void 0) {
+    connectable_props.node = ctx[8];
   }
   connectable2 = new Connectable({ props: connectable_props });
   binding_callbacks.push(() => bind(connectable2, "data", connectable_data_binding));
@@ -1434,7 +2006,7 @@ function create_each_block(key_1, ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const connectable_changes = {};
-      if (dirty & 1025) {
+      if (dirty & 2049) {
         connectable_changes.$$scope = { dirty, ctx };
       }
       if (!updating_data && dirty & 1) {
@@ -1444,7 +2016,7 @@ function create_each_block(key_1, ctx) {
       }
       if (!updating_node && dirty & 1) {
         updating_node = true;
-        connectable_changes.node = ctx[7];
+        connectable_changes.node = ctx[8];
         add_flush_callback(() => updating_node = false);
       }
       connectable2.$set(connectable_changes);
@@ -1503,60 +2075,75 @@ function create_if_block(ctx) {
   };
 }
 function create_fragment$1(ctx) {
-  let div;
+  let div0;
   let each_blocks = [];
   let each_1_lookup = /* @__PURE__ */ new Map();
-  let t;
+  let t0;
+  let t1;
+  let div1;
+  let object;
   let current;
   let each_value = ctx[0].nodes;
-  const get_key = (ctx2) => ctx2[7].id;
+  const get_key = (ctx2) => ctx2[8].id;
   for (let i = 0; i < each_value.length; i += 1) {
     let child_ctx = get_each_context(ctx, each_value, i);
     let key = get_key(child_ctx);
     each_1_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
   }
   let if_block = ctx[0].links.length > 0 && create_if_block(ctx);
+  object = new Object_1({ props: { val: ctx[0] } });
   return {
     c() {
-      div = element("div");
+      div0 = element("div");
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].c();
       }
-      t = space();
+      t0 = space();
       if (if_block)
         if_block.c();
+      t1 = space();
+      div1 = element("div");
+      create_component(object.$$.fragment);
       this.h();
     },
     l(nodes) {
-      div = claim_element(nodes, "DIV", { class: true });
-      var div_nodes = children(div);
+      div0 = claim_element(nodes, "DIV", { class: true });
+      var div0_nodes = children(div0);
       for (let i = 0; i < each_blocks.length; i += 1) {
-        each_blocks[i].l(div_nodes);
+        each_blocks[i].l(div0_nodes);
       }
-      t = claim_space(div_nodes);
+      t0 = claim_space(div0_nodes);
       if (if_block)
-        if_block.l(div_nodes);
-      div_nodes.forEach(detach);
+        if_block.l(div0_nodes);
+      div0_nodes.forEach(detach);
+      t1 = claim_space(nodes);
+      div1 = claim_element(nodes, "DIV", {});
+      var div1_nodes = children(div1);
+      claim_component(object.$$.fragment, div1_nodes);
+      div1_nodes.forEach(detach);
       this.h();
     },
     h() {
-      attr(div, "class", "wrapper svelte-1cba8mg");
+      attr(div0, "class", "wrapper svelte-1wtvvq8");
     },
     m(target, anchor) {
-      insert_hydration(target, div, anchor);
+      insert_hydration(target, div0, anchor);
       for (let i = 0; i < each_blocks.length; i += 1) {
-        each_blocks[i].m(div, null);
+        each_blocks[i].m(div0, null);
       }
-      append_hydration(div, t);
+      append_hydration(div0, t0);
       if (if_block)
-        if_block.m(div, null);
+        if_block.m(div0, null);
+      insert_hydration(target, t1, anchor);
+      insert_hydration(target, div1, anchor);
+      mount_component(object, div1, null);
       current = true;
     },
     p(ctx2, [dirty]) {
-      if (dirty & 3) {
+      if (dirty & 1) {
         each_value = ctx2[0].nodes;
         group_outros();
-        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block, t, get_each_context);
+        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value, each_1_lookup, div0, outro_and_destroy_block, create_each_block, t0, get_each_context);
         check_outros();
       }
       if (ctx2[0].links.length > 0) {
@@ -1569,7 +2156,7 @@ function create_fragment$1(ctx) {
           if_block = create_if_block(ctx2);
           if_block.c();
           transition_in(if_block, 1);
-          if_block.m(div, null);
+          if_block.m(div0, null);
         }
       } else if (if_block) {
         group_outros();
@@ -1578,6 +2165,10 @@ function create_fragment$1(ctx) {
         });
         check_outros();
       }
+      const object_changes = {};
+      if (dirty & 1)
+        object_changes.val = ctx2[0];
+      object.$set(object_changes);
     },
     i(local) {
       if (current)
@@ -1586,6 +2177,7 @@ function create_fragment$1(ctx) {
         transition_in(each_blocks[i]);
       }
       transition_in(if_block);
+      transition_in(object.$$.fragment, local);
       current = true;
     },
     o(local) {
@@ -1593,21 +2185,26 @@ function create_fragment$1(ctx) {
         transition_out(each_blocks[i]);
       }
       transition_out(if_block);
+      transition_out(object.$$.fragment, local);
       current = false;
     },
     d(detaching) {
       if (detaching)
-        detach(div);
+        detach(div0);
       for (let i = 0; i < each_blocks.length; i += 1) {
         each_blocks[i].d();
       }
       if (if_block)
         if_block.d();
+      if (detaching)
+        detach(t1);
+      if (detaching)
+        detach(div1);
+      destroy_component(object);
     }
   };
 }
 function instance($$self, $$props, $$invalidate) {
-  let nodes = { connections: [] };
   let data = {
     nodes: [
       {
@@ -1615,26 +2212,36 @@ function instance($$self, $$props, $$invalidate) {
         group: 1,
         connectable: true,
         x: 100,
-        y: 100
+        y: 100,
+        width: 100,
+        height: 100
       },
       {
         id: "2",
         group: 2,
         connectable: false,
         x: 414,
-        y: 190
+        y: 190,
+        width: 100,
+        height: 100
       },
       {
         id: "3",
         group: 2,
         connectable: false,
         x: 250,
-        y: 300
+        y: 300,
+        width: 100,
+        height: 100
       }
     ],
     links: [{ source: { id: "1" }, target: { id: "2" } }]
   };
   function panhandle_node_binding(value, node, each_value, node_index) {
+    each_value[node_index] = value;
+    $$invalidate(0, data);
+  }
+  function resizable_node_binding(value, node, each_value, node_index) {
     each_value[node_index] = value;
     $$invalidate(0, data);
   }
@@ -1648,8 +2255,8 @@ function instance($$self, $$props, $$invalidate) {
   }
   return [
     data,
-    nodes,
     panhandle_node_binding,
+    resizable_node_binding,
     connectable_data_binding,
     connectable_node_binding
   ];
@@ -1698,4 +2305,4 @@ class Routes extends SvelteComponent {
   }
 }
 export { Routes as default };
-//# sourceMappingURL=index.svelte-795dab0c.js.map
+//# sourceMappingURL=index.svelte-955af8df.js.map
