@@ -8,10 +8,11 @@
 
 <style>
 	main {
+		position: relative;
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
+		padding: 60px;
 		width: 100%;
 		height: 100%;
 		max-width: 1024px;
