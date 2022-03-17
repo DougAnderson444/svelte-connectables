@@ -2,10 +2,10 @@
 	import '../app.css';
 </script>
 
-<!-- <main> -->
-<slot />
+<main>
+	<slot />
+</main>
 
-<!-- </main> -->
 <style>
 	main {
 		flex: 1;
