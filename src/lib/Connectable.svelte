@@ -20,15 +20,9 @@
 
 	function handleConnecting(event) {
 		connectingNow = true;
-		console.log('CONNECTing');
 		source = event.detail.node;
 		// if connecting, set the target to the mouse pointer
-		if (
-			event.detail.x &&
-			event.detail.x !== target?.offsetLeft &&
-			event.detail.y &&
-			event.detail.y !== target?.offsetTop
-		)
+		if (event.detail?.x !== target?.offsetLeft && event.detail?.y !== target?.offsetTop)
 			target = {
 				offsetLeft: event.detail.x,
 				offsetTop: event.detail.y,
@@ -40,17 +34,25 @@
 	function handleConnected(event) {
 		connectingNow = false;
 
-		if (!event.detail.target.id) return; // node must have an ID
+		function getID(n) {
+			if (n.id) return n.id;
+			if (n.parentNode) return getID(n.parentNode);
+			return false;
+		}
+		let id = getID(event.detail.target);
 
-		console.log('CONNECTED firing');
+		// node must have an ID, can't be self
+		if (!id || id == node.id) return;
 
-		// TODO: Remove links button / context menu
-		// TODO: prevent duplicate links
+		// Prevent duplicate links
+		if (data.links.find((el) => el.source.id == node.id && el.target.id == id) !== undefined)
+			return;
+
 		data.links = [
 			...data.links,
 			{
 				source: { id: node.id },
-				target: { id: event.detail.target.id }
+				target: { id }
 			}
 		];
 	}
@@ -83,8 +85,8 @@
 		cursor: pointer;
 		border: 1px dashed black;
 		border-radius: 2px;
-		width: var(--size);
-		height: var(--size);
+		min-width: var(--size);
+		min-height: var(--size);
 		padding: calc(var(--size) / 8);
 	}
 	.endpoint:hover {
