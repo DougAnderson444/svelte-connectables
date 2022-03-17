@@ -22,39 +22,17 @@
 		mounted = true;
 	});
 
-	function genPath(link) {
-		// x1 = x1 < target?.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft;
-		// y1 = source.offsetTop + source.clientHeight / 2;
-		// x2 = target?.offsetLeft
-		// y2 = target?.offsetTop + target.offsetHeight / 2;
-		let sourceX = data.nodes.find((el) => el.id === link.source.id)?.x;
-		let sourceY = data.nodes.find((el) => el.id === link.source.id)?.y;
-		let targetX = data.nodes.find((el) => el.id === link.target.id)?.x;
-		let targetY = data.nodes.find((el) => el.id === link.target.id)?.y;
+	const showCoords = (link) => `[${link.source.id}] to [${link.target.id}]`;
 
+	function genPath(link) {
 		let sourceEl = document.getElementById(link.source.id);
 		let targetEl = document.getElementById(link.target.id);
 
-		// center
-		sourceX = sourceX + sourceEl.clientWidth / 2;
-		sourceY = sourceY + sourceEl.clientHeight / 2;
-		targetX = targetX + targetEl.clientWidth / 2;
-		targetY = targetY + targetEl.clientHeight / 2;
-
-		// if (sourceX < targetX) {
-		// 	sourceX = sourceX + sourceEl.clientWidth;
-		// 	sourceY = sourceY + sourceEl.clientHeight / 2;
-		// 	targetY = targetY + targetEl.clientHeight / 2;
-		// } else if (
-		// 	sourceX > targetX &&
-		// 	sourceX + targetX < sourceEl.clientWidth + targetEl.clientWidth
-		// ) {
-		// 	// stack above each other
-		// } else {
-		// 	targetX = targetX + targetEl.clientWidth;
-		// 	sourceY = sourceY + sourceEl.clientHeight / 2;
-		// 	targetY = targetY + targetEl.clientHeight / 2;
-		// }
+		// centered
+		let sourceX = sourceEl?.offsetLeft + sourceEl.offsetWidth / 2;
+		let sourceY = sourceEl?.offsetTop + sourceEl.offsetHeight / 2;
+		let targetX = targetEl?.offsetLeft + targetEl.offsetWidth / 2;
+		let targetY = targetEl?.offsetTop + targetEl.offsetHeight / 2;
 
 		let d = generateXcurve({
 			source: [sourceX, sourceY],
@@ -101,8 +79,8 @@
 							style=""
 						/>
 						<text>
-							<textPath xlink:href="#link_{i}" startOffset={'20%'}>
-								<tspan fill="black">Curvy Connector</tspan>
+							<textPath xlink:href="#link_{i}" startOffset={'40%'}>
+								<tspan fill="black">{showCoords(link)}</tspan>
 							</textPath>
 							<textPath xlink:href="#link_{i}" {startOffset} fill={arrowColor}>➤</textPath>
 						</text>
