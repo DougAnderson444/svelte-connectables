@@ -77,11 +77,10 @@
 	}
 	.endpoint {
 		position: absolute;
-		background-color: #baf3ca80;
+		background-color: #baf3ca;
 		box-shadow: 0 0 2px black;
 		transition: box-shadow 0.25s ease-in;
 		cursor: pointer;
-		opacity: 0.5;
 		border: 1px dashed black;
 		border-radius: 2px;
 		width: var(--size);
