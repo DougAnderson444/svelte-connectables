@@ -1,7 +1,6 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
 
-	export let nodes;
 	export let node;
 	export let mouseMoving = false;
 
@@ -15,7 +14,6 @@
 
 	function handlePanStart(event) {
 		mouseMoving = true;
-		// nodes = nodes; // if this is here, the boxes jump when mouse clicks up
 		dispatch('resimulate', 'resimulate');
 	}
 
@@ -25,15 +23,11 @@
 		node.x = node.x + event.detail.dx;
 		node.y = node.y + event.detail.dy;
 		node = node;
-
-		nodes[node.index] = { ...nodes[node.index], x: node.x, y: node.y };
-		nodes = nodes;
-		// dispatch('resimulate', 'resimulate'); // makes them stay still when mouse moving for a while
 	}
 
 	function handlePanEnd(event) {
 		mouseMoving = false;
-		nodes = nodes; // if this is here, the boxes jump when mouse clicks up
+		node = node;
 		dispatch('resimulate', 'resimulate');
 	}
 </script>
