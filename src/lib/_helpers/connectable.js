@@ -1,7 +1,7 @@
 // heavily inspired by svelte-dnd-action
 // https://github.com/isaacHagoel/svelte-dnd-action/blob/master/src/pointerAction.js
 
-import { styleActiveDropZones, styleInactiveDropZones } from './helpers/styler';
+import { styleActiveDropZones, styleInactiveDropZones } from './styler';
 
 const MIN_MOVEMENT_BEFORE_DRAG_START_PX = 3;
 const DEFAULT_DROP_TARGET_STYLE = {

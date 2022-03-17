@@ -8,20 +8,53 @@ Connect HTML elements with SVG curves. Like [jsPlumb](https://demo.jsplumbtoolki
 
 ![Demo](demo.gif)
 
+## Required data
+
+The data must have an array of nodes and array of links connecting those node by `id`:
+
+```
+	let data = {
+		nodes:
+			{
+				id: string
+				x: number
+				y: number
+				width: number
+				height: number
+			}[],
+		links:
+			{
+				source: {
+					id: string
+				},
+				target: {
+					id: string
+				}
+			}[]
+	};
+
+```
+
 ## Creating a connections
 
 ```
-npm i svelte-connectables
+npm i github:douganderson444/svelte-connectables
 ```
 
-Usage: See Demo.svelte, but something along these lines:
+## Exports
 
 ```js
-<script>
-	import Connectable from './Connectable.svelte';
-	import Pannable from './Pannable.svelte';
-</script>
+import Connectable from 'svelte-connectables/Connectable.svelte';
+import PanHandle from 'svelte-connectables/PanHandle.svelte';
+import Links from 'svelte-connectables/Links.svelte';
+import Resizable from 'svelte-connectables/Resizable.svelte';
+```
 
+## Usage
+
+See `Demo.svelte`, but something along these lines:
+
+```js
 <div class="wrapper">
 	<Connectable>Connect from Me</Connectable>
 

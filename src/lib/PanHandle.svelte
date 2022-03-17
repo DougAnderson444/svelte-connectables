@@ -9,7 +9,7 @@
 	let pannable;
 
 	onMount(async () => {
-		({ pannable } = await import('./pannable'));
+		({ pannable } = await import('./_helpers/pannable'));
 	});
 
 	function handlePanStart(event) {

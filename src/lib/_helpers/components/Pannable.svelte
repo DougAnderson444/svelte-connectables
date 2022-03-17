@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { spring } from 'svelte/motion';
-	import { pannable } from './pannable.js';
+	import { pannable } from '../pannable.js';
 
 	let panElement;
 	export let x = 0;

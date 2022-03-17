@@ -1,9 +1,6 @@
 <script>
-	import { onMount } from 'svelte';
-	import { spring } from 'svelte/motion';
-	import { connectable } from './connectable.js';
-	import Link from './Link.svelte';
-	import Pannable from './Pannable.svelte';
+	import { connectable } from './_helpers/connectable.js';
+	import Link from './_helpers/components/Link.svelte';
 
 	export let node;
 	export let data;
@@ -69,6 +66,7 @@
 	<slot />
 </div>
 
+<!-- Showing to possible link to-be  -->
 {#if connectingNow}
 	<Link {source} {target} />
 {/if}

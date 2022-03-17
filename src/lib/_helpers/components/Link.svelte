@@ -49,7 +49,6 @@
 	$: d = generateXcurve(sourceObj);
 </script>
 
-y2: {y2}
 <svelte:head
 	><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
 </svelte:head>
