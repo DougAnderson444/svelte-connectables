@@ -83,6 +83,12 @@ export function connectable(node, options) {
 			return;
 		}
 
+		// Don't connect while resizing
+		if (Array.from(e.target.classList).includes('svlt-grid-resizer')) {
+			printDebug(() => `Don't connect while resizing`);
+			return;
+		}
+
 		e.stopPropagation();
 		const c = e.touches ? e.touches[0] : e;
 		dragStartMousePosition = { x: c.clientX, y: c.clientY };
