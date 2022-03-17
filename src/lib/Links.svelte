@@ -23,24 +23,44 @@
 	});
 
 	function genPath(link) {
-		// let sourcex =
 		// x1 = x1 < target?.offsetLeft ? source.offsetLeft + source.clientWidth : source.offsetLeft;
 		// y1 = source.offsetTop + source.clientHeight / 2;
 		// x2 = target?.offsetLeft
 		// y2 = target?.offsetTop + target.offsetHeight / 2;
-		let sourcex = data.nodes.find((el) => el.id === link.source.id)?.x;
-		let sourcey = data.nodes.find((el) => el.id === link.source.id)?.y;
-		let source = [sourcex, sourcey];
-
+		let sourceX = data.nodes.find((el) => el.id === link.source.id)?.x;
+		let sourceY = data.nodes.find((el) => el.id === link.source.id)?.y;
 		let targetX = data.nodes.find((el) => el.id === link.target.id)?.x;
 		let targetY = data.nodes.find((el) => el.id === link.target.id)?.y;
 
-		console.log(targetX, targetY);
+		let sourceEl = document.getElementById(link.source.id);
+		let targetEl = document.getElementById(link.target.id);
+
+		// center
+		sourceX = sourceX + sourceEl.clientWidth / 2;
+		sourceY = sourceY + sourceEl.clientHeight / 2;
+		targetX = targetX + targetEl.clientWidth / 2;
+		targetY = targetY + targetEl.clientHeight / 2;
+
+		// if (sourceX < targetX) {
+		// 	sourceX = sourceX + sourceEl.clientWidth;
+		// 	sourceY = sourceY + sourceEl.clientHeight / 2;
+		// 	targetY = targetY + targetEl.clientHeight / 2;
+		// } else if (
+		// 	sourceX > targetX &&
+		// 	sourceX + targetX < sourceEl.clientWidth + targetEl.clientWidth
+		// ) {
+		// 	// stack above each other
+		// } else {
+		// 	targetX = targetX + targetEl.clientWidth;
+		// 	sourceY = sourceY + sourceEl.clientHeight / 2;
+		// 	targetY = targetY + targetEl.clientHeight / 2;
+		// }
 
 		let d = generateXcurve({
-			source,
+			source: [sourceX, sourceY],
 			target: [targetX, targetY]
 		});
+
 		return d;
 	}
 </script>
@@ -49,58 +69,62 @@
 	><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
 </svelte:head>
 
-<span class="svg-container">
-	<svg {width} {height}>
-		<defs>
-			<marker
-				id="triangle"
-				viewBox="0 0 10 10"
-				refX="1"
-				refY="5"
-				markerUnits="strokeWidth"
-				markerWidth="4"
-				markerHeight="3"
-				orient="auto"
-			>
-				<path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
-			</marker>
-		</defs>
-		{#each data.links as link, i}
-			{#if link}
-				<g stroke="red" stroke-opacity="0.9">
-					<path
-						d={genPath(link)}
-						id="link_{i}"
-						stroke-width={strokeWidth}
-						stroke={strokeColor}
-						fill="none"
-						stroke-linecap="round"
-						marker-mid="url(#triangle)"
-						style=""
-					/>
-				</g>
-			{/if}
-		{/each}
-		<text>
-			<textPath xlink:href="#path1" startOffset={'20%'}>
-				<tspan fill="black">Curvy Connector</tspan>
-			</textPath>
-			<textPath xlink:href="#path1" {startOffset} fill={arrowColor}>➤</textPath>
-		</text>
-	</svg>
-</span>
+{#if mounted}
+	<div class="svg-container">
+		<svg>
+			<defs>
+				<marker
+					id="triangle"
+					viewBox="0 0 10 10"
+					refX="1"
+					refY="5"
+					markerUnits="strokeWidth"
+					markerWidth="4"
+					markerHeight="3"
+					orient="auto"
+				>
+					<path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
+				</marker>
+			</defs>
+			{#each data.links as link, i}
+				{#if link && mounted}
+					<g stroke="green" stroke-opacity="0.1">
+						<path
+							d={genPath(link)}
+							id="link_{i}"
+							stroke-width={strokeWidth}
+							stroke={strokeColor}
+							fill="none"
+							stroke-linecap="round"
+							marker-mid="url(#triangle)"
+							stroke-opacity=".4"
+							style=""
+						/>
+						<text>
+							<textPath xlink:href="#link_{i}" startOffset={'20%'}>
+								<tspan fill="black">Curvy Connector</tspan>
+							</textPath>
+							<textPath xlink:href="#link_{i}" {startOffset} fill={arrowColor}>➤</textPath>
+						</text>
+					</g>
+				{/if}
+			{/each}
+		</svg>
+	</div>
+{/if}
 
 <style>
 	.svg-container {
-		position: absolute;
+		/* position: relative;
 		top: 0;
-		left: 0;
+		left: 0; */
 		width: 100%;
 		height: 100%;
-		z-index: -2;
 	}
 	svg {
 		position: absolute;
+		top: 0;
+		left: 0;
 		float: left;
 		stroke-width: 5;
 		border: 1px dashed blue;
