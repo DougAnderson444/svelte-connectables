@@ -1,9 +1,15 @@
 <script>
 	import { connectable } from './_helpers/connectable.js';
 	import Link from './_helpers/components/Link.svelte';
+	import PanHandle from '$lib/PanHandle.svelte';
+	import Resizable from '$lib/Resizable.svelte';
 
 	export let node;
 	export let data;
+
+	// optional props
+	export let resizable = true;
+	export let panhandle = true;
 
 	let source; // start of the connection
 	let target; // end of the connection
@@ -61,9 +67,19 @@
 	use:connectable
 	on:connecting={handleConnecting}
 	on:connected={handleConnected}
-	style="left: {x}px; top: {y}px;"
+	style="left: {x}px; top: {y}px; width: {node.width}px; height:{node.height}px;"
 >
-	<slot />
+	{#if resizable}
+		<Resizable bind:node>
+			{#if panhandle}
+				<PanHandle bind:node />
+			{/if}
+			<slot />
+		</Resizable>
+	{:else if panhandle}
+		<PanHandle bind:node />
+		<slot />
+	{/if}
 </div>
 
 <!-- Showing to possible link to-be  -->

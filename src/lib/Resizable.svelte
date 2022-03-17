@@ -5,9 +5,9 @@
 	export let resizable = true;
 
 	// @ts-ignore
-	let width = resizableDiv?.parentNode?.offsetWidth || 100;
+	let width = node.width || resizableDiv?.parentNode?.offsetWidth || 100;
 	// @ts-ignore
-	let height = resizableDiv?.parentNode?.offsetheight || 100;
+	let height = node.height || resizableDiv?.parentNode?.offsetheight || 100;
 
 	$: node.width = newSize.width;
 	$: node.height = newSize.height;
