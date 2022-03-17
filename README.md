@@ -4,7 +4,7 @@ Connect HTML elements with SVG curves. Like [jsPlumb](https://demo.jsplumbtoolki
 
 - [x] Connect HTML elements together
 - [x] Adjusts when HTML Element position changes
-- [] UI updates data object
+- [x] UI updates data object
 
 ![Demo](demo.gif)
 
