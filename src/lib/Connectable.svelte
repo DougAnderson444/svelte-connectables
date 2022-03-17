@@ -72,20 +72,11 @@
 {/if}
 
 <style>
-	:root {
-		--size: 6em;
-	}
 	.endpoint {
 		position: absolute;
-		background-color: #baf3ca;
 		box-shadow: 0 0 2px black;
 		transition: box-shadow 0.25s ease-in;
 		cursor: pointer;
-		border: 1px dashed black;
-		border-radius: 2px;
-		min-width: var(--size);
-		min-height: var(--size);
-		padding: calc(var(--size) / 8);
 	}
 	.endpoint:hover {
 		box-shadow: 0 0 6px black;

@@ -30,7 +30,7 @@
 		<Connectable bind:data bind:node>
 			<Resizable bind:node>
 				<PanHandle bind:node />
-				{node.id} <span>Connect from Me</span>
+				<div class="inner">{node.id} Connect from Me</div>
 			</Resizable>
 		</Connectable>
 	{/each}
@@ -44,6 +44,9 @@
 </div>
 
 <style>
+	:root {
+		--size: 6em;
+	}
 	.wrapper {
 		display: flex;
 		position: relative;
@@ -53,5 +56,12 @@
 		border-radius: 4px;
 		width: auto;
 		height: 800px;
+	}
+
+	.inner {
+		/* background-color: #baf3ca; */
+		width: 100%;
+		height: 100%;
+		border-radius: 2px;
 	}
 </style>
