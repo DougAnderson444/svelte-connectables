@@ -22,7 +22,7 @@ function create_fragment(ctx) {
       this.h();
     },
     h() {
-      attr(main, "class", "svelte-hxjjwn");
+      attr(main, "class", "svelte-zbph0q");
     },
     m(target, anchor) {
       insert_hydration(target, main, anchor);
@@ -71,4 +71,4 @@ class _layout extends SvelteComponent {
   }
 }
 export { _layout as default };
-//# sourceMappingURL=__layout.svelte-e3635d8a.js.map
+//# sourceMappingURL=__layout.svelte-2df7064e.js.map

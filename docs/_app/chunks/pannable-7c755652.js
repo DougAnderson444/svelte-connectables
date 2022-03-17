@@ -47,4 +47,4 @@ function pannable(node) {
   };
 }
 export { pannable };
-//# sourceMappingURL=pannable-35ddda62.js.map
+//# sourceMappingURL=pannable-7c755652.js.map
