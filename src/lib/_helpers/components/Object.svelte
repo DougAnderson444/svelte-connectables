@@ -1,5 +1,5 @@
 <script>
-	export let val;
+	export let val = null;
 </script>
 
 {#if val}

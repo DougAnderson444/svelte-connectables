@@ -9,7 +9,14 @@
 	export let strokeColor = 'green';
 	export let strokeWidth = 3;
 	export let arrowColor = 'green';
-	export let startOffset = '60%';
+
+	export let strokeOpacity = '0.5';
+
+	export let groupStrokeOpacity = '0.1';
+	export let groupStrokeColor = 'white';
+
+	export let textStartOffset = '40%';
+	export let arrowStartOffset = '60%';
 
 	const generateXcurve = link(curveBumpX);
 
@@ -18,8 +25,6 @@
 	onMount(() => {
 		mounted = true;
 	});
-
-	const showCoords = (link) => `[${link.source.id}] to [${link.target.id}]`;
 
 	function genPath(link) {
 		let sourceEl = document.getElementById(link.source.id);
@@ -48,23 +53,9 @@
 {#if mounted}
 	<div class="svg-container">
 		<svg>
-			<defs>
-				<marker
-					id="triangle"
-					viewBox="0 0 10 10"
-					refX="1"
-					refY="5"
-					markerUnits="strokeWidth"
-					markerWidth="4"
-					markerHeight="3"
-					orient="auto"
-				>
-					<path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
-				</marker>
-			</defs>
 			{#each links as link, i}
 				{#if link && mounted}
-					<g stroke="green" stroke-opacity="0.1">
+					<g stroke={groupStrokeColor} stroke-opacity={groupStrokeOpacity}>
 						<path
 							d={genPath(link)}
 							id="link_{i}"
@@ -73,18 +64,22 @@
 							fill="none"
 							stroke-linecap="round"
 							marker-mid="url(#triangle)"
-							stroke-opacity=".4"
-							style=""
+							stroke-opacity={strokeOpacity}
 						/>
 						<text>
-							<textPath xlink:href="#link_{i}" startOffset={'40%'}>
-								<tspan fill="black">{showCoords(link)}</tspan>
+							<textPath xlink:href="#link_{i}" startOffset={textStartOffset}>
+								<tspan fill="black"
+									>{link?.opts?.label?.enabled ? link?.opts?.label?.value : ''}</tspan
+								>
 							</textPath>
-							<textPath xlink:href="#link_{i}" {startOffset} fill={arrowColor}>➤</textPath>
+							<textPath xlink:href="#link_{i}" startOffset={arrowStartOffset} fill={arrowColor}
+								>{link?.opts?.arrow ? '➤' : ''}</textPath
+							>
 						</text>
 					</g>
 				{/if}
 			{/each}
+			// draw an s curve svg with arrow marker mid genPath
 		</svg>
 	</div>
 {/if}

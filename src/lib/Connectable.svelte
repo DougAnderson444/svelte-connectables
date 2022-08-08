@@ -8,8 +8,8 @@
 	export let data;
 
 	// optional props
-	export let resizable = true;
-	export let panhandle = true;
+	export let resizable = false;
+	export let panhandle = false;
 
 	let source; // start of the connection
 	let target; // end of the connection
@@ -55,7 +55,11 @@
 			...data.links,
 			{
 				source: { id: node.id },
-				target: { id }
+				target: { id },
+				opts: {
+					arrow: true,
+					label: { enabled: true, value: `${node.id} to ${id}` }
+				}
 			}
 		];
 	}
@@ -78,6 +82,8 @@
 		</Resizable>
 	{:else if panhandle}
 		<PanHandle bind:node />
+		<slot />
+	{:else}
 		<slot />
 	{/if}
 </div>

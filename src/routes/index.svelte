@@ -38,8 +38,8 @@
 
 <div class="wrapper">
 	{#each data.nodes as node (node.id)}
-		<!-- Connectable Prop Options: resizable={false} panhandle={false}  -->
-		<Connectable bind:data bind:node>
+		<!-- Connectable Prop Options: resizable={boolean} panhandle={boolean}  -->
+		<Connectable bind:data bind:node resizable={true} panhandle={true}>
 			<div class="inner">
 				{node.id} Connect from Me <br />
 				{node.x},{node.y}<br />
