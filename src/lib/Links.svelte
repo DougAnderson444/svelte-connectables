@@ -4,10 +4,7 @@
 	import { onMount } from 'svelte';
 	import { link, curveBumpX } from 'd3-shape';
 
-	export let data;
-
-	export let width = 500;
-	export let height = 500;
+	export let links;
 
 	export let strokeColor = 'green';
 	export let strokeWidth = 3;
@@ -43,6 +40,7 @@
 	}
 </script>
 
+<!-- svelte-ignore component-name-lowercase -->
 <svelte:head
 	><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Luckiest+Guy" />
 </svelte:head>
@@ -64,7 +62,7 @@
 					<path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
 				</marker>
 			</defs>
-			{#each data.links as link, i}
+			{#each links as link, i}
 				{#if link && mounted}
 					<g stroke="green" stroke-opacity="0.1">
 						<path

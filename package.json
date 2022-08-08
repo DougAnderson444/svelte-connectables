@@ -1,7 +1,8 @@
 {
 	"name": "svelte-connectables",
 	"version": "0.0.8",
-	"svelte": "src/lib/connectable.js",
+	"svelte": "index.js",
+	"module": "index.js",
 	"scripts": {
 		"dev": "svelte-kit dev --port 3031",
 		"build": "svelte-kit build",

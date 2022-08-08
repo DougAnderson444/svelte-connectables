@@ -1,9 +1,4 @@
-import Connectable from './Connectable.svelte';
-import Links from './Links.svelte';
-import PanHandle from './PanHandle.svelte';
-import Resizable from './Resizable.svelte';
-
-export { Connectable };
-export { Links };
-export { PanHandle };
-export { Resizable };
+export { default as Connectable } from './Connectable.svelte';
+export { default as Links } from './Links.svelte';
+export { default as PanHandle } from './PanHandle.svelte';
+export { default as Resizable } from './Resizable.svelte';

@@ -49,7 +49,7 @@
 	{/each}
 
 	{#if data.links.length > 0}
-		<Links {data} />
+		<Links links={data.links} />
 	{/if}
 </div>
 <div>
