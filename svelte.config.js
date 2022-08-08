@@ -7,7 +7,9 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: preprocess(),
+	preprocess: preprocess({
+		postcss: true
+	}),
 
 	kit: {
 		adapter: adapter({
@@ -21,25 +23,9 @@ const config = {
 			// change below to your repo name
 			base: process.env.NODE_ENV === 'production' ? '/svelte-connectables' : ''
 		},
-		vite: () => ({
-			build: {
-				rollupOptions: {
-					plugins: [],
-					output: {
-						minifyInternalExports: false,
-						compact: false
-					}
-				},
-				minify: false,
-				sourcemap: true,
-				optimization: {
-					minimize: false
-				}
-			},
-			optimization: {
-				minimize: false
-			}
-		})
+		alias: {
+			$demo: './src/demo'
+		}
 	}
 };
 

@@ -34,8 +34,6 @@
 	};
 </script>
 
-<!-- Troubleshooting data  -->
-
 <div class="wrapper">
 	{#each data.nodes as node (node.id)}
 		<!-- Connectable Prop Options: resizable={boolean} panhandle={boolean}  -->

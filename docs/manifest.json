@@ -1,0 +1,82 @@
+{
+  ".svelte-kit/runtime/client/start.js": {
+    "file": "_app/immutable/start-6c7d872b.js",
+    "src": ".svelte-kit/runtime/client/start.js",
+    "isEntry": true,
+    "imports": [
+      "_index-c3f6a5b8.js",
+      "_preload-helper-8f298e01.js"
+    ],
+    "dynamicImports": [
+      "src/routes/__layout.svelte",
+      ".svelte-kit/runtime/components/error.svelte",
+      "src/routes/connect.svelte",
+      "src/routes/index.svelte"
+    ]
+  },
+  "src/routes/__layout.svelte": {
+    "file": "_app/immutable/pages/__layout.svelte-c9391184.js",
+    "src": "src/routes/__layout.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-c3f6a5b8.js"
+    ],
+    "css": [
+      "_app/immutable/assets/__layout-a6018bd2.css"
+    ]
+  },
+  ".svelte-kit/runtime/components/error.svelte": {
+    "file": "_app/immutable/error.svelte-a3281d2e.js",
+    "src": ".svelte-kit/runtime/components/error.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-c3f6a5b8.js"
+    ]
+  },
+  "src/routes/connect.svelte": {
+    "file": "_app/immutable/pages/connect.svelte-ff8e848f.js",
+    "src": "src/routes/connect.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-c3f6a5b8.js"
+    ]
+  },
+  "src/routes/index.svelte": {
+    "file": "_app/immutable/pages/index.svelte-002f0315.js",
+    "src": "src/routes/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-c3f6a5b8.js",
+      "_preload-helper-8f298e01.js"
+    ],
+    "dynamicImports": [
+      "src/lib/_helpers/pannable.js"
+    ],
+    "css": [
+      "_app/immutable/assets/index-7e92c109.css"
+    ]
+  },
+  "_index-c3f6a5b8.js": {
+    "file": "_app/immutable/chunks/index-c3f6a5b8.js"
+  },
+  "_preload-helper-8f298e01.js": {
+    "file": "_app/immutable/chunks/preload-helper-8f298e01.js"
+  },
+  "src/lib/_helpers/pannable.js": {
+    "file": "_app/immutable/chunks/pannable-f08cd838.js",
+    "src": "src/lib/_helpers/pannable.js",
+    "isDynamicEntry": true
+  },
+  "src/routes/__layout.css": {
+    "file": "_app/immutable/assets/__layout-a6018bd2.css",
+    "src": "src/routes/__layout.css"
+  },
+  "src/routes/index.css": {
+    "file": "_app/immutable/assets/index-7e92c109.css",
+    "src": "src/routes/index.css"
+  }
+}
